@@ -1,24 +1,93 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Tokyo Gym Search
 
-Things you may want to cover:
+## 概要
+多くのチェック項目を設け、複数条件からジム検索ができるような施設の情報比較サービスです。本気度の高いトレーニーがジムを探す際にかゆいところに手が届くような条件項目を設定します。
 
-* Ruby version
+## コンセプト
+2度検索ボタンを押させないジム検索サービス
 
-* System dependencies
+## バージョン
+Ruby 2.6.5 Rails 5.2.4
 
-* Configuration
+## 機能一覧
+* ジム情報投稿機能
+* ジム情報検索機能
+* ジム情報一覧表示機能
+* ジム情報編集機能
+* ジム情報削除機能
+* ログイン機能
+* 管理者ログイン機能
+* 修正依頼機能
+* ジム情報詳細表示機能
+* ジム情報お気に入り機能
+* ページネーション
+* コメント投稿機能
+* コメント削除機能
 
-* Database creation
+## カタログ設計
+https://docs.google.com/spreadsheets/d/1NnqOkuqFwCUUrP8dUjpJjEnQm-ybjvB7IAqeH-M-MCM/edit#gid=1177389026
 
-* Database initialization
+## テーブル定義
+https://docs.google.com/spreadsheets/d/1eubihlLC9g_bCP-sC153ZDaeJy0ijF02CvrlFSkc_Kk/edit#gid=271623951
 
-* How to run the test suite
+## 画面遷移図
+https://docs.google.com/spreadsheets/d/1luWBHwJEdttW3AcxCSiDqK2NHNQeFx2mDTDbIZe1jc0/edit#gid=0
 
-* Services (job queues, cache servers, search engines, etc.)
+## ワイヤーフレーム
+https://docs.google.com/spreadsheets/d/1wsZxmldtGIEFIDORjKb8RfE7V58nvpCDhsSpxmRp07c/edit#gid=0
 
-* Deployment instructions
+## 使用予定Gem
+* kaminari
+* carrierwave
+* mini_magick
+* device
+* cancancan
+* ransack
 
-* ...
+# English Ver
+
+## Overview
+It is a facility information comparison service that allows you to search for gyms from multiple conditions by providing many check items.We will create a service that is very helpful for serious trainees.
+
+## Concept
+Gym search service that does not let you press the search button twice.
+
+## Version
+Ruby 2.6.5 Rails 5.2.4
+
+## List of Functions
+* Ability to post gym information
+* Ability to search for gym information
+* Ability to list gym information
+* Ability to edit gym information
+* Ability to delete gym information
+* Login function
+* Administrator login function
+* Correction request function
+* Ability to display detailed gym information
+* Function to add gym information to favorites
+* Pagination
+* Comment posting function
+* Comment deletion function
+
+## Catalog Design
+https://docs.google.com/spreadsheets/d/1NnqOkuqFwCUUrP8dUjpJjEnQm-ybjvB7IAqeH-M-MCM/edit#gid=1177389026
+
+## Table Definition
+https://docs.google.com/spreadsheets/d/1eubihlLC9g_bCP-sC153ZDaeJy0ijF02CvrlFSkc_Kk/edit#gid=271623951
+
+## Screen Transition Diagram
+https://docs.google.com/spreadsheets/d/1luWBHwJEdttW3AcxCSiDqK2NHNQeFx2mDTDbIZe1jc0/edit#gid=0
+
+## Wire Flame
+https://docs.google.com/spreadsheets/d/1wsZxmldtGIEFIDORjKb8RfE7V58nvpCDhsSpxmRp07c/edit#gid=0
+
+## To be used Gem
+* kaminari
+* carrierwave
+* mini_magick
+* device
+* cancancan
+* ransack
