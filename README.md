@@ -3,7 +3,9 @@
 # Tokyo Gym Search
 
 ## 概要
-多くのチェック項目を設け、複数条件からジム検索ができるような施設の情報比較サービスです。本気度の高いトレーニーがジムを探す際にかゆいところに手が届くような条件項目を設定します。
+多くのチェック項目を設け、複数条件からジム検索ができるような施設の情報比較サービスです。
+トレーニングジムを探そうと思ったときに、最寄り駅、月会費、営業時間を調べるくらいならすぐに出てくるのですが、設備はどれくらい充実してるのか、どんなマシンが置いてあるのかなどと調べようと思うとなかなか情報がヒットしません。特にマシンの情報などは個別HPにすら載っておらず、知ろうと思ったら問い合わせるほかない場合もあります。
+「ジム選びにこだわりが出てきた人」のために、詳細な情報がまとまっており検索項目も充実したジム検索サービスを作ろうと考えこのアプリを制作することにしました。
 
 ## コンセプト
 2度検索ボタンを押させないジム検索サービス
@@ -52,8 +54,9 @@ https://docs.google.com/spreadsheets/d/1wsZxmldtGIEFIDORjKb8RfE7V58nvpCDhsSpxmRp
 # English Ver
 
 ## Overview
-It is a facility information comparison service that allows you to search for gyms from multiple conditions by providing many check items.We will create a service that is very helpful for serious trainees.
-
+It is a facility information comparison service that allows you to search for gyms from multiple conditions by providing many check items.
+When I try to find a training gym, it will come up soon if I look up the nearest station, monthly fee, business hours. When I think about it, information does not hit easily. In particular, the machine information is not even listed on the individual HP, and in some cases you may have no choice but to ask if you want to know.
+For "people who are particular about choosing a gym", I decided to create this app in order to create a gym search service that has detailed information and complete search items.
 ## Concept
 Gym search service that does not let you press the search button twice.
 
