@@ -16,17 +16,17 @@ Ruby 2.6.5 Rails 5.2.4
 ## 機能一覧
 * ジム情報投稿機能
 * ジム情報検索機能
+* 評価・レビュー投稿機能
 * ジム情報一覧表示機能
+* ジム詳細表示機能
 * ジム情報編集機能
 * ジム情報削除機能
-* ログイン機能
+* ログイン/ログアウト機能
 * 管理者ログイン機能
-* 修正依頼機能
-* ジム情報詳細表示機能
-* ジム情報お気に入り機能
+* タグ管理機能
 * ページネーション
-* コメント投稿機能
-* コメント削除機能
+* お気に入り機能
+
 
 ## カタログ設計
 https://docs.google.com/spreadsheets/d/1NnqOkuqFwCUUrP8dUjpJjEnQm-ybjvB7IAqeH-M-MCM/edit#gid=1177389026
@@ -66,17 +66,13 @@ Ruby 2.6.5 Rails 5.2.4
 ## List of Functions
 * Ability to post gym information
 * Ability to search for gym information
+* Ability to post ratings and reviews
 * Ability to list gym information
 * Ability to edit gym information
-* Ability to delete gym information
 * Login function
 * Administrator login function
-* Correction request function
-* Ability to display detailed gym information
 * Function to add gym information to favorites
 * Pagination
-* Comment posting function
-* Comment deletion function
 
 ## Catalog Design
 https://docs.google.com/spreadsheets/d/1NnqOkuqFwCUUrP8dUjpJjEnQm-ybjvB7IAqeH-M-MCM/edit#gid=1177389026
