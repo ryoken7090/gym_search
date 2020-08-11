@@ -5,7 +5,7 @@ class Facility < ApplicationRecord
      accept_drop: 2,
      fail_drop: 3
    }
-   
+
   enum parking: {
     unknown_parking: 0,
     available_parking: 1,
@@ -17,7 +17,7 @@ class Facility < ApplicationRecord
     not_available_shower: 2
   }
 
-  enum recordale: {
+  enum recordable: {
     unknown_record: 0,
     allow_record: 1,
     not_allow_record: 2
