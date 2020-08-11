@@ -8,8 +8,12 @@ class FacilitiesController < ApplicationController
   end
 
   def create
-    Facility.create(facility_params)
-    redirect_to facilities_path
+    @facility = Facility.new(facility_params)
+    if @facility.save
+      redirect_to facilities_path
+    else
+      render :new
+    end
   end
 
   def edit
