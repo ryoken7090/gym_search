@@ -1,2 +1,3 @@
-<h1>Facilities#edit</h1>
-<p>Find me in app/views/facilities/edit.html.erb</p>
+<h1>施設情報編集</h1>
+<%= render 'form' %>
+<p><%= link_to '施設詳細へ', facility_path(@facility.id) %></p>

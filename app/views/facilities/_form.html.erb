@@ -1,0 +1,90 @@
+<% if @facility.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @facility.errors.count %>件のエラーがあります。</h2>
+    <ul>
+    <% @facility.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with(model: @facility, local: true) do |form| %>
+  <div>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.label :drop %>
+      <%= form.select :drop, Facility.drops.keys %>
+    </div>
+    <div>
+      <%= form.label :parking %>
+      <%= form.select :parking, Facility.parkings.keys %>
+    </div>
+    <div>
+      <%= form.label :shower %>
+      <%= form.select :shower, Facility.showers.keys %>
+    </div>
+    <div>
+      <%= form.label :recordable %>
+      <%= form.select :recordable, Facility.recordables.keys %>
+    </div>
+    <div>
+      <%= form.label :visiter %>
+      <%= form.select :visiter, Facility.visiters.keys %>
+    </div>
+    <div>
+      <%= form.label :monthly_fee %>
+      <%= form.text_field :monthly_fee %>
+    </div>
+    <div>
+      <%= form.label :accessible_ten_min %>
+      <%= form.select :accessible_ten_min, Facility.accessible_ten_mins.keys %>
+    </div>
+    <div>
+      <%= form.label :trainer %>
+      <%= form.select :trainer, Facility.trainers.keys %>
+    </div>
+    <div>
+      <%= form.label :open_all_time %>
+      <%= form.select :open_all_time, Facility.open_all_times.keys %>
+    </div>
+    <div>
+      <%= form.label :station %>
+      <%= form.text_field :station %>
+    </div>
+    <div>
+      <%= form.label :description_station %>
+      <%= form.text_field :description_station %>
+    </div>
+    <div>
+      <%= form.label :address %>
+      <%= form.text_field :address %>
+    </div>
+    <div>
+      <%= form.label :tell %>
+      <%= form.text_field :tell %>
+    </div>
+    <div>
+      <%= form.label :hp_url %>
+      <%= form.text_field :hp_url %>
+    </div>
+    <div>
+      <%= form.label :regular_holiday %>
+      <%= form.text_field :regular_holiday %>
+    </div>
+    <div>
+      <%= form.label :business_hours %>
+      <%= form.text_field :business_hours %>
+    </div>
+    <div>
+      <%= form.label :description %>
+      <%= form.text_field :description %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  </div>
+<% end %>
+<p><%= link_to '施設一覧へ', facilities_path %></p>

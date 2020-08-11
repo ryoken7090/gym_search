@@ -1,4 +1,5 @@
 class FacilitiesController < ApplicationController
+  before_action :set_facility, only: [:show, :edit, :update]
   def index
     @facilities = Facility.all
   end
@@ -16,10 +17,23 @@ class FacilitiesController < ApplicationController
     end
   end
 
+  def show
+  end
+
+
   def edit
   end
 
-  def show
+  def update
+    if @facility.update(facility_params)
+      redirect_to facility_path(@facility.id), notice: "施設情報を編集しました"
+    else
+      render :edit
+    end
+  end
+
+  private
+  def set_facility
     @facility = Facility.find(params[:id])
   end
   def facility_params
