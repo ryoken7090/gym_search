@@ -89,4 +89,5 @@
 </table>
 
 <p><%= link_to '施設情報を編集する', edit_facility_path(@facility.id) %></p>
+<p><%= link_to '施設情報を削除する', facility_path(@facility.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></p>
 <p><%= link_to '施設一覧へ', facilities_path %></p>

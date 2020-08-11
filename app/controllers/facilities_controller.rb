@@ -1,5 +1,5 @@
 class FacilitiesController < ApplicationController
-  before_action :set_facility, only: [:show, :edit, :update]
+  before_action :set_facility, only: [:show, :edit, :update, :destroy]
   def index
     @facilities = Facility.all
   end
@@ -30,6 +30,11 @@ class FacilitiesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @facility.destroy
+    redirect_to facilities_path, notice: "施設情報を削除しました"
   end
 
   private
