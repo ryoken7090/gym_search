@@ -9,7 +9,7 @@ class FacilitiesController < ApplicationController
 
   def create
     Facility.create(facility_params)
-    redirect_to new_facility_path
+    redirect_to facilities_path
   end
 
   def edit
