@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_165954) do
+ActiveRecord::Schema.define(version: 2020_08_11_051254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_165954) do
     t.integer "drop", default: 0
     t.integer "parking", default: 0
     t.integer "shower", default: 0
-    t.integer "record", default: 0
+    t.integer "recordable", default: 0
     t.integer "visiter", default: 0
     t.integer "monthly_fee"
     t.integer "accessible_ten_min", default: 0
