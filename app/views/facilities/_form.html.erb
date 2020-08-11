@@ -8,7 +8,7 @@
     </ul>
   </div>
 <% end %>
-<%= form_with(model: @facility, local: true) do |form| %>
+<%= form_with(model: @facility, local: true ,url: choose_new_or_edit) do |form| %>
   <div>
     <div>
       <%= form.label :name %>

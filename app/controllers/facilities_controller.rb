@@ -9,12 +9,21 @@ class FacilitiesController < ApplicationController
   end
 
   def create
-    @facility = Facility.new(facility_params), notice: "施設情報を作成しました"
-    if @facility.save
-      redirect_to facilities_path
-    else
+    @facility = Facility.new(facility_params)
+    if params[:back]
       render :new
+    else
+      if @facility.save
+        redirect_to facilities_path, notice: "施設情報を作成しました"
+      else
+        render :new
+      end
     end
+  end
+
+  def confirm
+    @facility = Facility.new(facility_params)
+    render :new if @facility.invalid?
   end
 
   def show
