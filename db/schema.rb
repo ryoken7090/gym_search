@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_161928) do
+ActiveRecord::Schema.define(version: 2020_08_10_165954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "facilities", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "drop"
-    t.integer "parking"
-    t.integer "shower"
-    t.integer "record"
-    t.integer "visiter"
+    t.integer "drop", default: 0
+    t.integer "parking", default: 0
+    t.integer "shower", default: 0
+    t.integer "record", default: 0
+    t.integer "visiter", default: 0
     t.integer "monthly_fee"
-    t.integer "accessible_ten_min"
-    t.integer "trainer"
-    t.integer "open_all_time"
+    t.integer "accessible_ten_min", default: 0
+    t.integer "trainer", default: 0
+    t.integer "open_all_time", default: 0
     t.string "station"
     t.integer "description_station"
     t.string "address"
