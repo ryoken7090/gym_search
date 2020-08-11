@@ -9,7 +9,7 @@ class FacilitiesController < ApplicationController
   end
 
   def create
-    @facility = Facility.new(facility_params)
+    @facility = Facility.new(facility_params), notice: "施設情報を作成しました"
     if @facility.save
       redirect_to facilities_path
     else
