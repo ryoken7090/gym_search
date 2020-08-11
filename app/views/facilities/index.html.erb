@@ -1,2 +1,11 @@
-<h1>Facilities#index</h1>
-<p>Find me in app/views/facilities/index.html.erb</p>
+<h1>登録施設一覧</h1>
+<table>
+  <tr>
+    <th>施設名</th>
+  </tr>
+<% @facilities.each do |facility| %>
+  <tr>
+    <td><%= facility.name %></td>
+  </tr>
+<% end %>
+</table>
