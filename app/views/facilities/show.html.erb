@@ -1,2 +1,60 @@
-<h1>Facilities#show</h1>
-<p>Find me in app/views/facilities/show.html.erb</p>
+<h1><%= @facility.name %>詳細</h1>
+
+<h3>設備・特徴</h3>
+<table>
+  <tr>
+    <td>ドロップ可否</td>
+    <td><%= @facility.drop %></td>
+  </tr>
+  <tr>
+    <td>駐車場の有無</td>
+    <td><%= @facility.parking %></td>
+  </tr>
+  <tr>
+    <td>シャワーの有無</td>
+    <td><%= @facility.shower %></td>
+  </tr>
+  <tr>
+    <td>撮影の可否</td>
+    <td><%= @facility.recordable %></td>
+  </tr>
+  <tr>
+    <td>夜間の営業</td>
+    <td><%= @facility.open_all_time %></td>
+  </tr>
+  <tr>
+    <td>ビジター利用の可否</td>
+    <td><%= @facility.visiter %></td>
+  </tr>
+  <tr>
+    <td>駅から徒歩10分以内</td>
+    <td><%= @facility.accessible_ten_min %></td>
+  </tr>
+  <tr>
+    <td>トレーナーの有無</td>
+    <td><%= @facility.trainer %></td>
+  </tr>
+  <tr>
+    <td>月会費(男性一ヶ月)</td>
+    <td><%= @facility.monthly_fee %>円</td>
+  </tr>
+
+</table>
+
+<h3>備考</h3>
+<p><%= @facility.description %></p>
+
+<h3>施設概要</h3>
+<table>
+  <tr>
+    <td>施設名：<%= @facility.name %></td>
+    <td>住所：<%= @facility.address %></td>
+  </tr>
+  <tr>
+    <td>電話番号：<%= @facility.tell %></td>
+    <td>ホームページ：<%= @facility.hp_url %></td>
+  </tr>
+  <tr>
+    アクセス：<%= @facility.station %>駅から<%= @facility.description_station %>
+  </tr>
+</table>
