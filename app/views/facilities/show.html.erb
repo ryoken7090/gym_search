@@ -36,7 +36,11 @@
   </tr>
   <tr>
     <td>月会費(男性一ヶ月)</td>
-    <td><%= @facility.monthly_fee %>円</td>
+    <% if @facility.monthly_fee == nil %>
+      <td>不明</td>
+    <% else %>
+      <td><%= @facility.monthly_fee %>円</td>
+    <% end %>
   </tr>
 
 </table>
@@ -51,10 +55,36 @@
     <td>住所：<%= @facility.address %></td>
   </tr>
   <tr>
-    <td>電話番号：<%= @facility.tell %></td>
-    <td>ホームページ：<%= @facility.hp_url %></td>
+    <td>電話番号：
+      <% if @facility.tell == nil %>
+       登録なし
+      <% else %>
+        <%= @facility.tell %>
+      <% end %>
+    </td>
+    <td>ホームページ：
+      <% if @facility.hp_url == nil %>
+        登録なし
+      <% else %>
+        <%= @facility.hp_url %>
+      <% end %>
+    </td>
   </tr>
   <tr>
-    アクセス：<%= @facility.station %>駅から<%= @facility.description_station %>
+    <% binding.pry %>
+    <td>最寄り駅：
+      <% if @facility.station == nil %>
+        登録なし
+      <% else %>
+        <%= @facility.station %>
+      <% end %>
+    </td>
+    <td>駅からの距離：
+      <% if @facility.description_station == nil %>
+        登録なし
+      <% else %>
+        <%= @facility.description_station %>
+      <% end %>
+    </td>
   </tr>
 </table>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_11_051254) do
+ActiveRecord::Schema.define(version: 2020_08_11_092125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_08_11_051254) do
     t.integer "trainer", default: 0
     t.integer "open_all_time", default: 0
     t.string "station"
-    t.integer "description_station"
+    t.string "description_station"
     t.string "address"
     t.string "tell"
     t.string "hp_url"
