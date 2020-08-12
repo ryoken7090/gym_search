@@ -35,8 +35,8 @@
       <%= form.select :visiter, Facility.visiters.keys.map {|k| [I18n.t("enums.facility.visiter.#{k}"), k]} %>
     </div>
     <div>
-      <%= form.label :monthly_fee %>
-      <%= form.text_field :monthly_fee %>
+      男性一ヶ月分の<%= form.label :monthly_fee %>(半角入力)
+      <%= form.text_field :monthly_fee %>円
     </div>
     <div>
       <%= form.label :accessible_ten_min %>
@@ -52,7 +52,7 @@
     </div>
     <div>
       <%= form.label :station %>
-      <%= form.text_field :station %>
+      <%= form.text_field :station %>駅
     </div>
     <div>
       <%= form.label :description_station %>
@@ -63,7 +63,7 @@
       <%= form.text_field :address %>
     </div>
     <div>
-      <%= form.label :tell %>
+      <%= form.label :tell %>(半角入力)
       <%= form.text_field :tell %>
     </div>
     <div>

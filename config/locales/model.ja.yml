@@ -4,7 +4,7 @@ ja:
       facility: 施設
     attributes:
       facility:
-        name: タイトル
+        name: 施設名
         drop: ドロップ可否
         parking: 駐車場有無
         shower: シャワーの有無
