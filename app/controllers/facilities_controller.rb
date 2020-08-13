@@ -14,7 +14,7 @@ class FacilitiesController < ApplicationController
       render :new
     else
       if @facility.save
-        redirect_to facilities_path, notice: "施設情報を作成しました"
+        redirect_to facility_path(@facility.id), notice: "施設情報を作成しました"
       else
         render :new
       end
