@@ -86,6 +86,23 @@
       <% end %>
     </td>
   </tr>
+  <tr>
+    <td>定休日：
+      <% if @facility.regular_holiday.blank? %>
+        登録なし
+      <% else %>
+        <%= @facility.regular_holiday %>
+      <% end %>
+    </td>
+    <td>営業時間：
+      <% if @facility.business_hours.blank? %>
+        登録なし
+      <% else %>
+        <%= @facility.business_hours %>
+      <% end %>
+    </td>
+  </tr>
+
 </table>
 
 <p><%= link_to '施設情報を編集する', edit_facility_path(@facility.id) %></p>
