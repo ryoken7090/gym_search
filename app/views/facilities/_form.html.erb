@@ -15,6 +15,11 @@
       <%= form.text_field :name %>
     </div>
     <div>
+      <%= form.label :city_id %>
+      <%= form.select :city_id, City.all.map{|c| [c.name, c.id]} %>
+    </div>
+    </div>
+    <div>
       <%= form.label :drop %>
       <%= form.select :drop, Facility.drops.keys.map {|k| [I18n.t("enums.facility.drop.#{k}"), k]} %>
     </div>

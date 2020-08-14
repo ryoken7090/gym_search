@@ -1,6 +1,7 @@
 <h3>以下の内容で登録する</h3>
 <%= form_with(model: @facility, url: facilities_path, local: true) do |form| %>
   <%= form.hidden_field :name %>
+  <%= form.hidden_field :city_id %>
   <%= form.hidden_field :drop %>
   <%= form.hidden_field :parking %>
   <%= form.hidden_field :shower %>
@@ -20,6 +21,7 @@
   <%= form.hidden_field :description %>
 
   <h3>設備・特徴</h3>
+  <p>地域名：<%= @facility.city.name %></p>
   <table>
     <tr>
       <td>ドロップ可否</td>
