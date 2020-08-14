@@ -2,7 +2,7 @@ class Facility < ApplicationRecord
   validates :name, uniqueness: true
   validates :name, length: { in: 1..30 }
   validates :tell, format: {with: /\A0\d{1,3}[-(]\d{1,4}[-)]\d{4}\z/}, allow_blank: true
-  validates :monthly_fee, format: {with: /\A\d{4,5}\z/}, allow_blank: true
+  validates :monthly_fee, format: {with: /\A\d{4,6}\z/}, allow_blank: true
 
   enum drop: {
      unknown_drop: 0,
