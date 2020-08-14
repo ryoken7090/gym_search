@@ -1,0 +1,60 @@
+ja:
+  activerecord:
+    models:
+      facility: 施設
+    attributes:
+      facility:
+        name: 施設名
+        drop: ドロップ可否
+        parking: 駐車場有無
+        shower: シャワーの有無
+        recordable: 撮影可否
+        visiter: ビジター利用可否
+        monthly_fee: 月会費
+        accessible_ten_min: 徒歩10分圏内か
+        trainer: トレーナーの在籍有無
+        open_all_time: 夜間利用の可否
+        station: 最寄り駅
+        description_station: 最寄り駅からの距離
+        address: 住所
+        tell: 電話番号
+        hp_url: ホームページ
+        regular_holiday: 定休日
+        business_hours: 営業時間
+        image: 写真
+        description: 備考
+  enums:
+    facility:
+      drop:
+        unknown_drop: 未記入
+        possible_drop: ○
+        accept_drop: △
+        fail_drop: ✕
+      parking:
+        unknown_parking: 未記入
+        available_parking: ○
+        not_available_parking: ✕
+      shower:
+        unknown_shower: 未記入
+        available_shower: ○
+        not_available_shower: ✕
+      recordable:
+        unknown_record: 未記入
+        allow_record: ○
+        not_allow_record: ✕
+      visiter:
+        unknown_visiter: 未記入
+        allow_visiter: ○
+        not_allow_visiter: ×
+      accessible_ten_min:
+        unknown_accessible: 未記入
+        accessible: ○
+        not_accessible: ✕
+      trainer:
+        unknown_trainer: 未記入
+        available_trainer: ○
+        not_available_trainer: ✕
+      open_all_time:
+        unknown_open_all_time: 未記入
+        yes_open_all_time: ○
+        not_open_all_time: ✕

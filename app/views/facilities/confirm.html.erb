@@ -1,0 +1,110 @@
+<h3>以下の内容で登録する</h3>
+<%= form_with(model: @facility, url: facilities_path, local: true) do |form| %>
+  <%= form.hidden_field :name %>
+  <%= form.hidden_field :drop %>
+  <%= form.hidden_field :parking %>
+  <%= form.hidden_field :shower %>
+  <%= form.hidden_field :recordable %>
+  <%= form.hidden_field :visiter %>
+  <%= form.hidden_field :monthly_fee %>
+  <%= form.hidden_field :accessible_ten_min %>
+  <%= form.hidden_field :trainer %>
+  <%= form.hidden_field :open_all_time %>
+  <%= form.hidden_field :station %>
+  <%= form.hidden_field :description_station %>
+  <%= form.hidden_field :address %>
+  <%= form.hidden_field :tell %>
+  <%= form.hidden_field :hp_url %>
+  <%= form.hidden_field :regular_holiday %>
+  <%= form.hidden_field :business_hours %>
+  <%= form.hidden_field :description %>
+
+  <h3>設備・特徴</h3>
+  <table>
+    <tr>
+      <td>ドロップ可否</td>
+      <td><%= @facility.drop %></td>
+    </tr>
+    <tr>
+      <td>駐車場の有無</td>
+      <td><%= @facility.parking %></td>
+    </tr>
+    <tr>
+      <td>シャワーの有無</td>
+      <td><%= @facility.shower %></td>
+    </tr>
+    <tr>
+      <td>撮影の可否</td>
+      <td><%= @facility.recordable %></td>
+    </tr>
+    <tr>
+      <td>夜間の営業</td>
+      <td><%= @facility.open_all_time %></td>
+    </tr>
+    <tr>
+      <td>ビジター利用の可否</td>
+      <td><%= @facility.visiter %></td>
+    </tr>
+    <tr>
+      <td>駅から徒歩10分以内</td>
+      <td><%= @facility.accessible_ten_min %></td>
+    </tr>
+    <tr>
+      <td>トレーナーの有無</td>
+      <td><%= @facility.trainer %></td>
+    </tr>
+    <tr>
+      <td>月会費(男性一ヶ月)</td>
+      <% if @facility.monthly_fee.blank? %>
+        <td>不明</td>
+      <% else %>
+        <td><%= @facility.monthly_fee %>円</td>
+      <% end %>
+    </tr>
+  </table>
+
+  <h3>備考</h3>
+  <p><%= @facility.description %></p>
+
+  <h3>施設概要</h3>
+  <table>
+    <tr>
+      <td>施設名：<%= @facility.name %></td>
+      <td>住所：<%= @facility.address %></td>
+    </tr>
+    <tr>
+      <td>電話番号：
+        <% if @facility.tell.blank? %>
+          登録なし
+        <% else %>
+          <%= @facility.tell %>
+        <% end %>
+      </td>
+      <td>ホームページ：
+        <% if @facility.hp_url.blank? %>
+          登録なし
+        <% else %>
+          <%= @facility.hp_url %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>最寄り駅：
+        <% if @facility.station.blank? %>
+          登録なし
+        <% else %>
+          <%= @facility.station %>
+        <% end %>
+      </td>
+      <td>駅からの距離：
+        <% if @facility.description_station.blank? %>
+          登録なし
+        <% else %>
+          <%= @facility.description_station %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+  <%= form.submit  "登録する" %>
+  <%= form.submit "戻る", name: 'back' %>
+<% end %>
