@@ -16,7 +16,7 @@
     </div>
     <div>
       <%= form.label :city_id %>
-      <%= form.select :city_id, City.all.map{|c| [c.name, c.id]} %>
+      <%= form.select :city_id, City.all.map{|c| [c.name, c.id]}, { include_blank: '選択なし'} %>
     </div>
     </div>
     <div>
