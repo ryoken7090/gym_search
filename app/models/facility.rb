@@ -1,5 +1,5 @@
 class Facility < ApplicationRecord
-  belongs_to :facility
+  belongs_to :city
   validates :name, uniqueness: true
   validates :name, length: { in: 1..30 }
   validates :tell, format: {with: /\A0\d{1,3}[-(]\d{1,4}[-)]\d{4}\z/}, allow_blank: true
