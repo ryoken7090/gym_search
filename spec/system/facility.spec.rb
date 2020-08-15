@@ -5,7 +5,7 @@ RSpec.describe Facility, type: :system do
     FactoryBot.create(:city, name: 'テスト市')
   end
   describe 'Function to create new facility' do
-    context 'when you input the name and and press the register button and press the register button on confirmation page' do
+    context 'when you input necessary information and and press the register button and press the register button on confirmation page' do
       it 'can save data' do
         visit new_facility_path
         fill_in '施設名', with: 'テスト施設'
