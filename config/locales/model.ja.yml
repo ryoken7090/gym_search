@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       facility: 施設
+      city: 市区町村
     attributes:
       facility:
         name: 施設名
@@ -23,6 +24,8 @@ ja:
         business_hours: 営業時間
         image: 写真
         description: 備考
+      city:
+        name: 地域名
   enums:
     facility:
       drop:
