@@ -5,7 +5,7 @@ RSpec.describe 'facility model', type: :model do
   end
   describe 'The test of validation' do
     context 'When the name field is empty' do
-      it 'pass validation' do
+      it 'dont pass validation' do
         facility = Facility.new(name: '', city_id: @city.id)
         expect(facility).not_to be_valid
       end
