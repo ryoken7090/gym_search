@@ -3,6 +3,7 @@ ja:
     models:
       facility: 施設
       city: 市区町村
+      tag: タグ
     attributes:
       facility:
         name: 施設名
@@ -26,6 +27,8 @@ ja:
         description: 備考
       city:
         name: 地域名
+      tag:
+        name: 項目名
   enums:
     facility:
       drop:
