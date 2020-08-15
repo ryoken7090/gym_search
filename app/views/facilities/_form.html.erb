@@ -1,3 +1,12 @@
+<script type="text/javascript">
+$(document).ready(function () {
+  $(".city_select").change(function () {
+    select_city = $(".city_select option:selected").text();
+    $("#output_city").text('東京都 ' + select_city);
+  })
+})
+</script>
+
 <% if @facility.errors.any? %>
   <div id="error_explanation">
     <h2><%= @facility.errors.count %>件のエラーがあります。</h2>
@@ -13,6 +22,11 @@
     <div>
       <%= form.label :name %>
       <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.label :city_id %>
+      <%= form.select :city_id, City.all.map{|c| [c.name, c.id]}, {include_blank: '選択なし'}, class:"city_select" %>
+    </div>
     </div>
     <div>
       <%= form.label :drop %>
@@ -58,8 +72,10 @@
       <%= form.label :description_station %>
       <%= form.text_field :description_station %>
     </div>
+
     <div>
       <%= form.label :address %>
+      <div id="output_city"></div>
       <%= form.text_field :address %>
     </div>
     <div>

@@ -53,6 +53,7 @@ class FacilitiesController < ApplicationController
   def facility_params
     params.require(:facility).permit(
                                     :name,
+                                    :city_id,
                                     :drop,
                                     :parking,
                                     :shower,
