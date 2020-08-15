@@ -46,6 +46,13 @@
 
 </table>
 
+<p>ついているタグ</p>
+<ul>
+  <% @facility.tags.each do |tag| %>
+    <li><%= tag.name %></li>
+  <% end %>
+</ul>
+
 <h3>備考</h3>
 <p><%= @facility.description %></p>
 

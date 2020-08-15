@@ -13,6 +13,7 @@
   <%= form.hidden_field :open_all_time %>
   <%= form.hidden_field :station %>
   <%= form.hidden_field :description_station %>
+  <%= form.hidden_field :tag_ids %>
   <%= form.hidden_field :address %>
   <%= form.hidden_field :tell %>
   <%= form.hidden_field :hp_url %>
@@ -64,6 +65,12 @@
       <% end %>
     </tr>
   </table>
+  <p>ついているタグ</p>
+  <ul>
+    <% @facility.tags.each do |tag| %>
+      <li><%= tag.name %></li>
+    <% end %>
+  </ul>
 
   <h3>備考</h3>
   <p><%= @facility.description %></p>
