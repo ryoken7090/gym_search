@@ -1,5 +1,8 @@
 require 'rails_helper'
 RSpec.describe Facility, type: :system do
+  before do
+    @city = FactoryBot.create(:city, name: 'テスト区')
+  end
   describe 'Function to create new facility' do
     context 'when you input the name and and press the register button and press the register button on confirmation page' do
       it 'can save data' do
