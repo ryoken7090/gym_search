@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_132537) do
+ActiveRecord::Schema.define(version: 2020_08_16_155038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,8 +44,10 @@ ActiveRecord::Schema.define(version: 2020_08_16_132537) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "city_id"
+    t.bigint "poster_id", null: false
     t.index ["city_id"], name: "index_facilities_on_city_id"
     t.index ["name"], name: "index_facilities_on_name", unique: true
+    t.index ["poster_id"], name: "index_facilities_on_poster_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -75,4 +77,5 @@ ActiveRecord::Schema.define(version: 2020_08_16_132537) do
   end
 
   add_foreign_key "facilities", "cities"
+  add_foreign_key "facilities", "users", column: "poster_id"
 end
