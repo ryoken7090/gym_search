@@ -35,3 +35,5 @@ group :test do
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'enum_help'
+gem 'devise'
+gem 'devise-i18n'

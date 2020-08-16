@@ -1,5 +1,6 @@
 class FacilitiesController < ApplicationController
   before_action :set_facility, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :confirm,  :edit, :update, :destroy]
   def index
     @facilities = Facility.all
   end
@@ -11,6 +12,7 @@ class FacilitiesController < ApplicationController
   def create
     params[:facility][:tag_ids]=params[:facility][:tag_ids].split
     @facility = Facility.new(facility_params)
+    @facility.poster_id = current_user.id
     if params[:back]
       render :new
     else
@@ -24,6 +26,7 @@ class FacilitiesController < ApplicationController
 
   def confirm
     @facility = Facility.new(facility_params)
+    @facility.poster_id = current_user.id
     render :new if @facility.invalid?
   end
 

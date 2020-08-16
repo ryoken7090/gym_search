@@ -10,7 +10,29 @@
   </head>
 
   <body>
-    <%= notice %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <% if user_signed_in? %>
+      <p>ようこそ：<%= link_to current_user.name, user_path(id: current_user.id) %>さん</p>
+      <p>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          ログアウト
+        <% end %>
+      </p>
+    <% else %>
+      <p>
+        <%= link_to new_user_session_path do %>
+          ログイン
+        <% end %>
+      </p>
+      <p>
+        <%= link_to new_user_registration_path do %>
+          新規登録
+        <% end %>
+      </p>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
