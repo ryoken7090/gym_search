@@ -4,6 +4,7 @@ ja:
       facility: 施設
       city: 市区町村
       tag: タグ
+      user: ユーザー
     attributes:
       facility:
         name: 施設名
@@ -29,6 +30,8 @@ ja:
         name: 地域名
       tag:
         name: 項目名
+      user:
+        name: ユーザー名
   enums:
     facility:
       drop:
