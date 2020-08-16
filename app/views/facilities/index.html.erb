@@ -1,5 +1,8 @@
 <h1>登録施設一覧</h1>
-<p><%= link_to '新規施設登録', new_facility_path %></p>
+<% if user_signed_in? %>
+ <p><%= link_to '新規施設登録', new_facility_path %></p>
+<% end %>
+
 <table>
   <tr>
     <th>施設名</th>
