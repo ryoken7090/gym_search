@@ -1,5 +1,8 @@
 class Facility < ApplicationRecord
   belongs_to :city
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings, source: :tag
+  accepts_nested_attributes_for :taggings, allow_destroy: true
   validates :name, uniqueness: true
   validates :name, length: { in: 1..30 }
   validates :tell, format: {with: /\A0\d{1,3}[-(]\d{1,4}[-)]\d{4}\z/}, allow_blank: true

@@ -10,3 +10,10 @@ CSV.foreach('db/city.csv', headers: true) do |row|
   City.create(id: row['id'],
               name: row['name'])
 end
+
+tags = Tag.create([{name: "40kg以上のダンベルが置いてある"},
+                  {name: "DLプラットフォームがある"},
+                  {name: "靴の貸出がある"},
+                  {name: "ウェアの貸出がある"},
+                  {name: "日焼けマシーンがある"}
+                  ])

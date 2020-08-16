@@ -9,6 +9,7 @@ class FacilitiesController < ApplicationController
   end
 
   def create
+    params[:facility][:tag_ids]=params[:facility][:tag_ids].split
     @facility = Facility.new(facility_params)
     if params[:back]
       render :new
@@ -70,6 +71,7 @@ class FacilitiesController < ApplicationController
                                     :hp_url,
                                     :regular_holiday,
                                     :business_hours,
-                                    :description)
+                                    :description,
+                                    tag_ids: [])
   end
 end

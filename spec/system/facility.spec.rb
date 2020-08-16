@@ -5,7 +5,7 @@ RSpec.describe Facility, type: :system do
     FactoryBot.create(:city, name: 'テスト市')
   end
   describe 'Function to create new facility' do
-    context 'when you input the name and and press the register button and press the register button on confirmation page' do
+    context 'when you input necessary information and and press the register button and press the register button on confirmation page' do
       it 'can save data' do
         visit new_facility_path
         fill_in '施設名', with: 'テスト施設'
@@ -59,7 +59,7 @@ RSpec.describe Facility, type: :system do
         expect(all('tbody tr')[6]).to have_content '○'
         expect(all('tbody tr')[7]).to have_content '○'
         expect(all('tbody tr')[8]).to have_content '10000円'
-        expect(all('p')[1]).to have_content '特になし'
+        expect(all('p')[2]).to have_content '特になし'
         expect(all('tbody tr')[9]).to have_content '施設名：テスト施設'
         expect(all('tbody tr')[10]).to have_content '電話番号： 000-0000-0000'
         expect(all('tbody tr')[11]).to have_content '最寄り駅： 新宿駅'
@@ -103,7 +103,7 @@ RSpec.describe Facility, type: :system do
         expect(all('tbody tr')[6]).to have_content '✕'
         expect(all('tbody tr')[7]).to have_content '✕'
         expect(all('tbody tr')[8]).to have_content '9000円'
-        expect(all('p')[1]).to have_content '特になし'
+        expect(all('p')[2]).to have_content '特になし'
         expect(all('tbody tr')[9]).to have_content '施設名：TEST_NAME1'
         expect(all('tbody tr')[10]).to have_content '電話番号： 000-0000-1234'
         expect(all('tbody tr')[11]).to have_content '最寄り駅： 渋谷駅'

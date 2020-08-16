@@ -24,9 +24,8 @@ $(document).ready(function () {
       <%= form.text_field :name %>
     </div>
     <div>
-      <%= form.label :city_id %>
+      <%= form.label :city_id, "市区町村" %>
       <%= form.select :city_id, City.all.map{|c| [c.name, c.id]}, {include_blank: '選択なし'}, class:"city_select" %>
-    </div>
     </div>
     <div>
       <%= form.label :drop %>
@@ -72,7 +71,12 @@ $(document).ready(function () {
       <%= form.label :description_station %>
       <%= form.text_field :description_station %>
     </div>
-
+    <div>
+      <%= form.label :tags, "タグ" %><br>
+      <%= collection_check_boxes(:facility, :tag_ids, Tag.all, :id, :name) do |b| %>
+        <%= b.label { b.check_box + b.text } %>
+      <% end %>
+    </div>
     <div>
       <%= form.label :address %>
       <div id="output_city"></div>

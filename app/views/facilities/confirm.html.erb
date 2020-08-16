@@ -13,6 +13,7 @@
   <%= form.hidden_field :open_all_time %>
   <%= form.hidden_field :station %>
   <%= form.hidden_field :description_station %>
+  <%= form.hidden_field :tag_ids %>
   <%= form.hidden_field :address %>
   <%= form.hidden_field :tell %>
   <%= form.hidden_field :hp_url %>
@@ -25,35 +26,35 @@
   <table>
     <tr>
       <td>ドロップ可否</td>
-      <td><%= @facility.drop %></td>
+      <td><%= @facility.drop_i18n %></td>
     </tr>
     <tr>
       <td>駐車場の有無</td>
-      <td><%= @facility.parking %></td>
+      <td><%= @facility.parking_i18n %></td>
     </tr>
     <tr>
       <td>シャワーの有無</td>
-      <td><%= @facility.shower %></td>
+      <td><%= @facility.shower_i18n %></td>
     </tr>
     <tr>
       <td>撮影の可否</td>
-      <td><%= @facility.recordable %></td>
+      <td><%= @facility.recordable_i18n %></td>
     </tr>
     <tr>
       <td>夜間の営業</td>
-      <td><%= @facility.open_all_time %></td>
+      <td><%= @facility.open_all_time_i18n %></td>
     </tr>
     <tr>
       <td>ビジター利用の可否</td>
-      <td><%= @facility.visiter %></td>
+      <td><%= @facility.visiter_i18n %></td>
     </tr>
     <tr>
       <td>駅から徒歩10分以内</td>
-      <td><%= @facility.accessible_ten_min %></td>
+      <td><%= @facility.accessible_ten_min_i18n %></td>
     </tr>
     <tr>
       <td>トレーナーの有無</td>
-      <td><%= @facility.trainer %></td>
+      <td><%= @facility.trainer_i18n %></td>
     </tr>
     <tr>
       <td>月会費(男性一ヶ月)</td>
@@ -64,6 +65,12 @@
       <% end %>
     </tr>
   </table>
+  <p>ついているタグ</p>
+  <ul>
+    <% @facility.tags.each do |tag| %>
+      <li><%= tag.name %></li>
+    <% end %>
+  </ul>
 
   <h3>備考</h3>
   <p><%= @facility.description %></p>
