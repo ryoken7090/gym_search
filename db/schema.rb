@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_155038) do
+ActiveRecord::Schema.define(version: 2020_08_17_090538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,19 @@ ActiveRecord::Schema.define(version: 2020_08_16_155038) do
     t.index ["poster_id"], name: "index_facilities_on_poster_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "facility_id"
+    t.text "content"
+    t.integer "machine"
+    t.integer "caedio"
+    t.integer "free_weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["facility_id"], name: "index_reviews_on_facility_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer "facility_id"
     t.integer "tag_id"
@@ -78,4 +91,6 @@ ActiveRecord::Schema.define(version: 2020_08_16_155038) do
 
   add_foreign_key "facilities", "cities"
   add_foreign_key "facilities", "users", column: "poster_id"
+  add_foreign_key "reviews", "facilities"
+  add_foreign_key "reviews", "users"
 end

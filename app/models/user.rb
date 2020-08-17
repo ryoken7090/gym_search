@@ -6,5 +6,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   has_many :facilities, foreign_key: 'poster_id'
+  has_many :reviews, dependent: :destroy
 
 end
