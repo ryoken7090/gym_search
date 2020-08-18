@@ -120,23 +120,26 @@
   <p><%= link_to '施設情報を編集する', edit_facility_path(@facility.id) %></p>
   <p><%= link_to '施設情報を削除する', facility_path(@facility.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></p>
 <% end %>
-
-<table class="table is-fullwidth has-text-centered">
-  <thead>
-    <tr>
-      <th>ユーザー</th><th>フリーウェイト点数</th><th>内容</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @reviews.each do |review| %>
+<% if @reviews.present? %>
+  <table class="table is-fullwidth has-text-centered">
+    <thead>
       <tr>
-        <td><%= review.user.name %></td>
-        <td><%= review.free_weight %></td>
-        <td><%= review.content %></td>
+        <th>ユーザー</th><th>フリーウェイト評価</th><th>マシーン評価</th><th>有酸素評価</th><th>内容</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.user.name %></td>
+          <td><%= review.free_weight %></td>
+          <td><%= review.machine %></td>
+          <td><%= review.caedio %></td>
+          <td><%= review.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <%= render 'reviews/form', review: @review, facility: @facility %>
 

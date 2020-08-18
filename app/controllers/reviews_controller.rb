@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to facility_path(@review.facility)
     else
-      @facility = Facility.find(params[:id])
+      @facility = Facility.find(params[:facility_id])
       render "facilities/show"
     end
   end
@@ -15,6 +15,9 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:facility_id,
                                   :content,
-                                  :free_weight)
+                                  :free_weight,
+                                  :machine,
+                                  :caedio
+                                )
   end
 end
