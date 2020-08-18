@@ -10,6 +10,14 @@ class Facility < ApplicationRecord
   validates :tell, format: {with: /\A0\d{1,3}[-(]\d{1,4}[-)]\d{4}\z/}, allow_blank: true
   validates :monthly_fee, format: {with: /\A\d{4,6}\z/}, allow_blank: true
 
+  def free_weight_avg
+    unless self.reviews.empty?
+      reviews.average(:free_weight).round(1).to_f
+    else
+      0.0
+    end
+  end
+
   enum drop: {
      unknown_drop: 0,
      possible_drop: 1,

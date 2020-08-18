@@ -1,6 +1,10 @@
 <h1><%= @facility.name %>詳細</h1>
 <p>地域名：<%= @facility.city.name %></p>
 
+<div>
+  フリーウエイト<%= @facility.free_weight_avg %>点（<%= @facility.reviews.count %>件のレビュー）
+</div>
+
 <h3>設備・特徴</h3>
 <table>
   <tr>
@@ -116,7 +120,6 @@
   <p><%= link_to '施設情報を編集する', edit_facility_path(@facility.id) %></p>
   <p><%= link_to '施設情報を削除する', facility_path(@facility.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></p>
 <% end %>
-<p><%= link_to '施設一覧へ', facilities_path %></p>
 
 <table class="table is-fullwidth has-text-centered">
   <thead>
@@ -136,3 +139,5 @@
 </table>
 
 <%= render 'reviews/form', review: @review, facility: @facility %>
+
+<p><%= link_to '施設一覧へ', facilities_path %></p>
