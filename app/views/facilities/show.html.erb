@@ -117,3 +117,22 @@
   <p><%= link_to '施設情報を削除する', facility_path(@facility.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></p>
 <% end %>
 <p><%= link_to '施設一覧へ', facilities_path %></p>
+
+<table class="table is-fullwidth has-text-centered">
+  <thead>
+    <tr>
+      <th>ユーザー</th><th>フリーウェイト点数</th><th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.user.name %></td>
+        <td><%= review.free_weight %></td>
+        <td><%= review.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render 'reviews/form', review: @review, facility: @facility %>

@@ -31,6 +31,8 @@ class FacilitiesController < ApplicationController
   end
 
   def show
+    @reviews = @facility.reviews
+    @review = Review.new
   end
 
 
