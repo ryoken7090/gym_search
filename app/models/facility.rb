@@ -10,12 +10,16 @@ class Facility < ApplicationRecord
   validates :tell, format: {with: /\A0\d{1,3}[-(]\d{1,4}[-)]\d{4}\z/}, allow_blank: true
   validates :monthly_fee, format: {with: /\A\d{4,6}\z/}, allow_blank: true
 
-  def free_weight_avg
+  def avg_score(item)
     unless self.reviews.empty?
-      reviews.average(:free_weight).round(1).to_f
+      reviews.average(item).round(1).to_f
     else
       0.0
     end
+  end
+
+  def avg_score_percentage(item)
+    avg_score(item)*100/5
   end
 
   enum drop: {

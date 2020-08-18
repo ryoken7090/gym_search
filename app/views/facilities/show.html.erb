@@ -1,8 +1,30 @@
 <h1><%= @facility.name %>詳細</h1>
 <p>地域名：<%= @facility.city.name %></p>
 
+<h3>各項目の評価</h3>
+<p><%= @facility.reviews.count %>件のレビュー</p>
 <div>
-  フリーウエイト<%= @facility.free_weight_avg %>点（<%= @facility.reviews.count %>件のレビュー）
+  フリーウエイトエリア : <%= @facility.avg_score(:free_weight) %>点
+  <div class="total-rating">
+    <div class="star-rating-front" style="width: <%= @facility.avg_score_percentage(:free_weight) %>%">★★★★★</div>
+    <div class="star-rating-back">★★★★★</div>
+  </div>
+</div>
+
+<div>
+  マシーンエリア : <%= @facility.avg_score(:machine) %>点
+  <div class="total-rating">
+    <div class="star-rating-front" style="width: <%= @facility.avg_score_percentage(:machine) %>%">★★★★★</div>
+    <div class="star-rating-back">★★★★★</div>
+  </div>
+</div>
+
+<div>
+  有酸素エリア : <%= @facility.avg_score(:caedio) %>点
+  <div class="total-rating">
+    <div class="star-rating-front" style="width: <%= @facility.avg_score_percentage(:caedio) %>%">★★★★★</div>
+    <div class="star-rating-back">★★★★★</div>
+  </div>
 </div>
 
 <h3>設備・特徴</h3>
@@ -121,24 +143,17 @@
   <p><%= link_to '施設情報を削除する', facility_path(@facility.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></p>
 <% end %>
 <% if @reviews.present? %>
-  <table class="table is-fullwidth has-text-centered">
-    <thead>
-      <tr>
-        <th>ユーザー</th><th>フリーウェイト評価</th><th>マシーン評価</th><th>有酸素評価</th><th>内容</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @reviews.each do |review| %>
-        <tr>
-          <td><%= review.user.name %></td>
-          <td><%= review.free_weight %></td>
-          <td><%= review.machine %></td>
-          <td><%= review.caedio %></td>
-          <td><%= review.content %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <h3>レビュー一覧</h3>
+  <p><%= @facility.reviews.count %>件のレビュー</p>
+  <% @reviews.each do |review| %>
+    <div>
+      <h4><%= review.user.name %>さん</h4>
+      <p>フリーウェイト：<%= review.free_weight %>点</p>
+      <p>マシーン：<%= review.machine %>点</p>
+      <p>有酸素：<%= review.caedio %>点</p>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
 <% end %>
 
 <%= render 'reviews/form', review: @review, facility: @facility %>
