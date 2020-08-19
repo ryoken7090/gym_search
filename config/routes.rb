@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       post :confirm
     end
+    resources :reviews, only: [:index, :create]
   end
   root 'facilities#index'
 end

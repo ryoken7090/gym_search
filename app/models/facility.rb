@@ -4,10 +4,23 @@ class Facility < ApplicationRecord
   has_many :tags, through: :taggings, source: :tag
   accepts_nested_attributes_for :taggings, allow_destroy: true
   belongs_to :poster, class_name: 'User', foreign_key: 'poster_id'
+  has_many :reviews, dependent: :destroy
   validates :name, uniqueness: true
   validates :name, length: { in: 1..30 }
   validates :tell, format: {with: /\A0\d{1,3}[-(]\d{1,4}[-)]\d{4}\z/}, allow_blank: true
   validates :monthly_fee, format: {with: /\A\d{4,6}\z/}, allow_blank: true
+
+  def avg_score(item)
+    unless self.reviews.empty?
+      reviews.average(item).round(1).to_f
+    else
+      0.0
+    end
+  end
+
+  def avg_score_percentage(item)
+    avg_score(item)*100/5
+  end
 
   enum drop: {
      unknown_drop: 0,
