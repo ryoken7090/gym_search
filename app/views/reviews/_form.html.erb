@@ -12,7 +12,7 @@
 <% end %>
 
 <div class="rating-box">
-  <%= form_with model: review, url: facility_reviews_path(facility), local: true do |f| %>
+  <%= form_with model: [facility, review], url: facility_reviews_path(facility), remote: true do |f| %>
     <div class="free_weight">
       <p>フリーウェイトエリアの評価</p>
       <div class="main-rating">
@@ -65,8 +65,11 @@
     </div>
 
     <%= f.hidden_field :facility_id, value: facility.id %>
-    <%= f.text_field :content, class: "textarea" %>
-    <%= f.submit "保存", class: "button" %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <div class="action">
+      <%= f.submit "保存" %>
+    </div>
   <% end %>
 </div>
 

@@ -1,0 +1,13 @@
+<% if reviews.exists? %>
+  <h3>レビュー一覧</h3>
+  <p><%= reviews.count %>件のレビュー</p>
+  <% reviews.each do |review| %>
+    <div>
+      <h4><%= review.user.name %>さん</h4>
+      <p>フリーウェイト：<%= review.free_weight %>点</p>
+      <p>マシーン：<%= review.machine %>点</p>
+      <p>有酸素：<%= review.caedio %>点</p>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
+<% end %>

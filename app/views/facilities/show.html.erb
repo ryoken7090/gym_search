@@ -3,32 +3,10 @@
     <div class="main col-sm-10">
       <h1><%= @facility.name %></h1>
       <p><%= @facility.city.name %></p>
-
-      <h3>各項目の評価</h3>
-      <p><%= @facility.reviews.count %>件のレビュー</p>
-      <div>
-        フリーウエイトエリア : <%= @facility.avg_score(:free_weight) %>点
-        <div class="total-rating">
-          <div class="star-rating-front" style="width: <%= @facility.avg_score_percentage(:free_weight) %>%">★★★★★</div>
-          <div class="star-rating-back">★★★★★</div>
-        </div>
+      <div id="total_ratings">
+        <%= render partial: 'reviews/total', locals: { reviews: @facility.reviews, facility: @facility } %>
       </div>
 
-      <div>
-        マシーンエリア : <%= @facility.avg_score(:machine) %>点
-        <div class="total-rating">
-          <div class="star-rating-front" style="width: <%= @facility.avg_score_percentage(:machine) %>%">★★★★★</div>
-          <div class="star-rating-back">★★★★★</div>
-        </div>
-      </div>
-
-      <div>
-        有酸素エリア : <%= @facility.avg_score(:caedio) %>点
-        <div class="total-rating">
-          <div class="star-rating-front" style="width: <%= @facility.avg_score_percentage(:caedio) %>%">★★★★★</div>
-          <div class="star-rating-back">★★★★★</div>
-        </div>
-      </div>
 
       <h3>設備・特徴</h3>
       <table>
@@ -145,21 +123,14 @@
         <p><%= link_to '施設情報を編集する', edit_facility_path(@facility.id) %></p>
         <p><%= link_to '施設情報を削除する', facility_path(@facility.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></p>
       <% end %>
-      <% if @reviews.present? %>
-        <h3>レビュー一覧</h3>
-        <p><%= @facility.reviews.count %>件のレビュー</p>
-        <% @reviews.each do |review| %>
-          <div>
-            <h4><%= review.user.name %>さん</h4>
-            <p>フリーウェイト：<%= review.free_weight %>点</p>
-            <p>マシーン：<%= review.machine %>点</p>
-            <p>有酸素：<%= review.caedio %>点</p>
-            <p><%= review.content %></p>
-          </div>
-        <% end %>
-      <% end %>
 
-      <%= render 'reviews/form', review: @review, facility: @facility %>
+      <div id="reviews_area">
+        <%= render partial: 'reviews/index', locals: { reviews: @facility.reviews, facility: @facility } %>
+      </div>
+      <div class="new_review_area">
+        <%= render partial: 'reviews/form', locals: { review: @facility.reviews.build, facility: @facility } %>
+      </div>
+
 
       <p><%= link_to '施設一覧へ', facilities_path %></p>
     </div>
