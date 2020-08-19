@@ -1,161 +1,167 @@
-<h1><%= @facility.name %>詳細</h1>
-<p>地域名：<%= @facility.city.name %></p>
+<div class="container">
+  <div class="row">
+    <div class="main col-sm-10">
+      <h1><%= @facility.name %></h1>
+      <p><%= @facility.city.name %></p>
 
-<h3>各項目の評価</h3>
-<p><%= @facility.reviews.count %>件のレビュー</p>
-<div>
-  フリーウエイトエリア : <%= @facility.avg_score(:free_weight) %>点
-  <div class="total-rating">
-    <div class="star-rating-front" style="width: <%= @facility.avg_score_percentage(:free_weight) %>%">★★★★★</div>
-    <div class="star-rating-back">★★★★★</div>
-  </div>
-</div>
+      <h3>各項目の評価</h3>
+      <p><%= @facility.reviews.count %>件のレビュー</p>
+      <div>
+        フリーウエイトエリア : <%= @facility.avg_score(:free_weight) %>点
+        <div class="total-rating">
+          <div class="star-rating-front" style="width: <%= @facility.avg_score_percentage(:free_weight) %>%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+      </div>
 
-<div>
-  マシーンエリア : <%= @facility.avg_score(:machine) %>点
-  <div class="total-rating">
-    <div class="star-rating-front" style="width: <%= @facility.avg_score_percentage(:machine) %>%">★★★★★</div>
-    <div class="star-rating-back">★★★★★</div>
-  </div>
-</div>
+      <div>
+        マシーンエリア : <%= @facility.avg_score(:machine) %>点
+        <div class="total-rating">
+          <div class="star-rating-front" style="width: <%= @facility.avg_score_percentage(:machine) %>%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+      </div>
 
-<div>
-  有酸素エリア : <%= @facility.avg_score(:caedio) %>点
-  <div class="total-rating">
-    <div class="star-rating-front" style="width: <%= @facility.avg_score_percentage(:caedio) %>%">★★★★★</div>
-    <div class="star-rating-back">★★★★★</div>
-  </div>
-</div>
+      <div>
+        有酸素エリア : <%= @facility.avg_score(:caedio) %>点
+        <div class="total-rating">
+          <div class="star-rating-front" style="width: <%= @facility.avg_score_percentage(:caedio) %>%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+      </div>
 
-<h3>設備・特徴</h3>
-<table>
-  <tr>
-    <td>ドロップ可否</td>
-    <td><%= @facility.drop_i18n %></td>
-  </tr>
-  <tr>
-    <td>駐車場の有無</td>
-    <td><%= @facility.parking_i18n %></td>
-  </tr>
-  <tr>
-    <td>シャワーの有無</td>
-    <td><%= @facility.shower_i18n %></td>
-  </tr>
-  <tr>
-    <td>撮影の可否</td>
-    <td><%= @facility.recordable_i18n %></td>
-  </tr>
-  <tr>
-    <td>夜間の営業</td>
-    <td><%= @facility.open_all_time_i18n %></td>
-  </tr>
-  <tr>
-    <td>ビジター利用の可否</td>
-    <td><%= @facility.visiter_i18n %></td>
-  </tr>
-  <tr>
-    <td>駅から徒歩10分以内</td>
-    <td><%= @facility.accessible_ten_min_i18n %></td>
-  </tr>
-  <tr>
-    <td>トレーナーの有無</td>
-    <td><%= @facility.trainer_i18n %></td>
-  </tr>
-  <tr>
-    <td>月会費(男性一ヶ月)</td>
-    <% if @facility.monthly_fee.blank? %>
-      <td>不明</td>
-    <% else %>
-      <td><%= @facility.monthly_fee %>円</td>
-    <% end %>
-  </tr>
+      <h3>設備・特徴</h3>
+      <table>
+        <tr>
+          <td>ドロップ可否</td>
+          <td><%= @facility.drop_i18n %></td>
+        </tr>
+        <tr>
+          <td>駐車場の有無</td>
+          <td><%= @facility.parking_i18n %></td>
+        </tr>
+        <tr>
+          <td>シャワーの有無</td>
+          <td><%= @facility.shower_i18n %></td>
+        </tr>
+        <tr>
+          <td>撮影の可否</td>
+          <td><%= @facility.recordable_i18n %></td>
+        </tr>
+        <tr>
+          <td>夜間の営業</td>
+          <td><%= @facility.open_all_time_i18n %></td>
+        </tr>
+        <tr>
+          <td>ビジター利用の可否</td>
+          <td><%= @facility.visiter_i18n %></td>
+        </tr>
+        <tr>
+          <td>駅から徒歩10分以内</td>
+          <td><%= @facility.accessible_ten_min_i18n %></td>
+        </tr>
+        <tr>
+          <td>トレーナーの有無</td>
+          <td><%= @facility.trainer_i18n %></td>
+        </tr>
+        <tr>
+          <td>月会費(男性一ヶ月)</td>
+          <% if @facility.monthly_fee.blank? %>
+            <td>不明</td>
+          <% else %>
+            <td><%= @facility.monthly_fee %>円</td>
+          <% end %>
+        </tr>
 
-</table>
+      </table>
 
-<p>ついているタグ</p>
-<ul>
-  <% @facility.tags.each do |tag| %>
-    <li><%= tag.name %></li>
-  <% end %>
-</ul>
+      <p>ついているタグ</p>
+      <ul>
+        <% @facility.tags.each do |tag| %>
+          <li><%= tag.name %></li>
+        <% end %>
+      </ul>
 
-<h3>備考</h3>
-<p><%= @facility.description %></p>
+      <h3>備考</h3>
+      <p><%= @facility.description %></p>
 
-<h3>施設概要</h3>
-<table>
-  <tr>
-    <td>施設名：<%= @facility.name %></td>
-    <td>住所：<%= @facility.address %></td>
-  </tr>
-  <tr>
-    <td>電話番号：
-      <% if @facility.tell.blank? %>
-       登録なし
-      <% else %>
-        <%= @facility.tell %>
+      <h3>施設概要</h3>
+      <table>
+        <tr>
+          <td>施設名：<%= @facility.name %></td>
+          <td>住所：<%= @facility.address %></td>
+        </tr>
+        <tr>
+          <td>電話番号：
+            <% if @facility.tell.blank? %>
+             登録なし
+            <% else %>
+              <%= @facility.tell %>
+            <% end %>
+          </td>
+          <td>ホームページ：
+            <% if @facility.hp_url.blank? %>
+              登録なし
+            <% else %>
+              <%= @facility.hp_url %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>最寄り駅：
+            <% if @facility.station.blank? %>
+              登録なし
+            <% else %>
+              <%= @facility.station %>駅
+            <% end %>
+          </td>
+          <td>駅からの距離：
+            <% if @facility.description_station.blank? %>
+              登録なし
+            <% else %>
+              <%= @facility.description_station %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>定休日：
+            <% if @facility.regular_holiday.blank? %>
+              登録なし
+            <% else %>
+              <%= @facility.regular_holiday %>
+            <% end %>
+          </td>
+          <td>営業時間：
+            <% if @facility.business_hours.blank? %>
+              登録なし
+            <% else %>
+              <%= @facility.business_hours %>
+            <% end %>
+          </td>
+        </tr>
+
+      </table>
+      <% if user_signed_in? %>
+        <p><%= link_to '施設情報を編集する', edit_facility_path(@facility.id) %></p>
+        <p><%= link_to '施設情報を削除する', facility_path(@facility.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></p>
       <% end %>
-    </td>
-    <td>ホームページ：
-      <% if @facility.hp_url.blank? %>
-        登録なし
-      <% else %>
-        <%= @facility.hp_url %>
+      <% if @reviews.present? %>
+        <h3>レビュー一覧</h3>
+        <p><%= @facility.reviews.count %>件のレビュー</p>
+        <% @reviews.each do |review| %>
+          <div>
+            <h4><%= review.user.name %>さん</h4>
+            <p>フリーウェイト：<%= review.free_weight %>点</p>
+            <p>マシーン：<%= review.machine %>点</p>
+            <p>有酸素：<%= review.caedio %>点</p>
+            <p><%= review.content %></p>
+          </div>
+        <% end %>
       <% end %>
-    </td>
-  </tr>
-  <tr>
-    <td>最寄り駅：
-      <% if @facility.station.blank? %>
-        登録なし
-      <% else %>
-        <%= @facility.station %>駅
-      <% end %>
-    </td>
-    <td>駅からの距離：
-      <% if @facility.description_station.blank? %>
-        登録なし
-      <% else %>
-        <%= @facility.description_station %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <td>定休日：
-      <% if @facility.regular_holiday.blank? %>
-        登録なし
-      <% else %>
-        <%= @facility.regular_holiday %>
-      <% end %>
-    </td>
-    <td>営業時間：
-      <% if @facility.business_hours.blank? %>
-        登録なし
-      <% else %>
-        <%= @facility.business_hours %>
-      <% end %>
-    </td>
-  </tr>
 
-</table>
-<% if user_signed_in? %>
-  <p><%= link_to '施設情報を編集する', edit_facility_path(@facility.id) %></p>
-  <p><%= link_to '施設情報を削除する', facility_path(@facility.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></p>
-<% end %>
-<% if @reviews.present? %>
-  <h3>レビュー一覧</h3>
-  <p><%= @facility.reviews.count %>件のレビュー</p>
-  <% @reviews.each do |review| %>
-    <div>
-      <h4><%= review.user.name %>さん</h4>
-      <p>フリーウェイト：<%= review.free_weight %>点</p>
-      <p>マシーン：<%= review.machine %>点</p>
-      <p>有酸素：<%= review.caedio %>点</p>
-      <p><%= review.content %></p>
+      <%= render 'reviews/form', review: @review, facility: @facility %>
+
+      <p><%= link_to '施設一覧へ', facilities_path %></p>
     </div>
-  <% end %>
-<% end %>
-
-<%= render 'reviews/form', review: @review, facility: @facility %>
-
-<p><%= link_to '施設一覧へ', facilities_path %></p>
+  </div>
+</div>
