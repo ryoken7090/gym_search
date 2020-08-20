@@ -17,12 +17,3 @@ tags = Tag.create([{name: "40kg以上のダンベルが置いてある"},
                   {name: "ウェアの貸出がある"},
                   {name: "日焼けマシーンがある"}
                   ])
-
-equiments = Equipment.create([{name: "ベンチプレス台"},
-                              {name: "パワーラック"},
-                              {name: "スミスマシン"},
-                              {name: "アジャスタブルベンチ"},
-                              {name: "フラットベンチ"},
-                              {name: "ケーブルプーリー"}
-
-  ])
