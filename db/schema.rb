@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_090538) do
+ActiveRecord::Schema.define(version: 2020_08_19_142009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 2020_08_17_090538) do
     t.bigint "user_id"
     t.bigint "facility_id"
     t.text "content"
-    t.integer "machine"
-    t.integer "caedio"
-    t.integer "free_weight"
+    t.integer "machine", null: false
+    t.integer "caedio", null: false
+    t.integer "free_weight", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["facility_id"], name: "index_reviews_on_facility_id"

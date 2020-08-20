@@ -1,16 +1,19 @@
 class ReviewsController < ApplicationController
-  def index
-  end
+
   def create
-    @review = Review.new(review_params)
+    @facility = Facility.find(params[:facility_id])
+    @review = @facility.reviews.build(review_params)
     @review.user_id = current_user.id
-    if @review.save
-      redirect_to facility_path(@review.facility)
-    else
-      @facility = Facility.find(params[:facility_id])
-      render "facilities/show"
+
+    respond_to do |format|
+      if @review.save
+        format.js { render :index }
+      else
+        format.html { redirect_to facility_path(@facility), notice: '投稿できませんでした...' }
+      end
     end
   end
+
   private
   def review_params
     params.require(:review).permit(:facility_id,
