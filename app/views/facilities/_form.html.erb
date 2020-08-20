@@ -49,7 +49,7 @@ $(document).ready(function () {
     </div>
     <div>
       男性一ヶ月分の<%= form.label :monthly_fee %>(半角入力)
-      <%= form.text_field :monthly_fee %>円
+      <%= form.text_number :monthly_fee %>円
     </div>
     <div>
       <%= form.label :accessible_ten_min %>
@@ -100,7 +100,7 @@ $(document).ready(function () {
     </div>
     <div>
       <%= form.label :description %>
-      <%= form.text_field :description %>
+      <%= form.text_area :description %>
     </div>
     <div>
       <%= form.submit %>
