@@ -10,7 +10,7 @@ class FacilitiesController < ApplicationController
   end
 
   def create
-    params[:facility][:tag_ids]=params[:facility][:tag_ids].split
+    # params[:facility][:tag_ids]=params[:facility][:tag_ids].split
     @facility = Facility.new(facility_params)
     @facility.poster_id = current_user.id
     if params[:back]
