@@ -7,11 +7,18 @@ class FacilitiesController < ApplicationController
 
   def new
     @facility = Facility.new
+    # @number_equipment_items = 6
+    # number_equipment_items.times {
+      @facility.equipments.build
+    # }
+    # binding.pry
   end
 
   def create
     # params[:facility][:tag_ids]=params[:facility][:tag_ids].split
+    # binding.pry
     @facility = Facility.new(facility_params)
+    # binding.pry
     @facility.poster_id = current_user.id
     if params[:back]
       render :new
@@ -75,6 +82,7 @@ class FacilitiesController < ApplicationController
                                     :regular_holiday,
                                     :business_hours,
                                     :description,
-                                    tag_ids: [])
+                                    tag_ids: [],
+                                    equipments_attributes: [:amount, :name])
   end
 end
