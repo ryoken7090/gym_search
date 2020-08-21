@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_055831) do
 
   create_table "equipments", force: :cascade do |t|
     t.integer "name", null: false
-    t.integer "amount", default: -1, null: false
+    t.integer "amount"
     t.bigint "facility_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

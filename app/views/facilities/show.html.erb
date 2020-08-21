@@ -11,7 +11,13 @@
         <% @equipment_keys.each do |key| %>
         <tr>
           <td><%= I18n.t("enums.equipment.name.#{key}") %></td>
-          <td><%= @equipments.find_by(name: key).amount %>台</td>
+          <td>
+            <% if @equipments.find_by(name: key).amount.present?  %>
+              <%= @equipments.find_by(name: key).amount %>台
+            <% else %>
+              未記入
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </table>
