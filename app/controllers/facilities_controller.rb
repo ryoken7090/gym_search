@@ -38,6 +38,8 @@ class FacilitiesController < ApplicationController
   end
 
   def show
+    @equipment_keys = Equipment.names.keys
+    @equipments = @facility.equipments
   end
 
 

@@ -6,9 +6,19 @@
       <div id="total_ratings">
         <%= render partial: 'reviews/total', locals: { reviews: @facility.reviews, facility: @facility } %>
       </div>
+      <h3>設備</h3>
+      <table>
+        <% @equipment_keys.each do |key| %>
+        <tr>
+          <td><%= I18n.t("enums.equipment.name.#{key}") %></td>
+          <td><%= @equipments.find_by(name: key).amount %>台</td>
+        </tr>
+        <% end %>
+      </table>
 
 
-      <h3>設備・特徴</h3>
+
+      <h3>その他設備・特徴</h3>
       <table>
         <tr>
           <td>ドロップ可否</td>
