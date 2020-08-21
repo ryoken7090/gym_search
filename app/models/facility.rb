@@ -6,6 +6,8 @@ class Facility < ApplicationRecord
   belongs_to :poster, class_name: 'User', foreign_key: 'poster_id'
   has_many :reviews, dependent: :destroy
   has_many :equipments, dependent: :destroy
+  accepts_nested_attributes_for :equipments
+
   validates :name, uniqueness: true
   validates :name, length: { in: 1..30 }
   validates :tell, format: {with: /\A0\d{1,3}[-(]\d{1,4}[-)]\d{4}\z/}, allow_blank: true
