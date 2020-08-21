@@ -5,6 +5,7 @@ ja:
       city: 市区町村
       tag: タグ
       user: ユーザー
+      equipment: 設備
     attributes:
       facility:
         name: 施設名
@@ -32,6 +33,9 @@ ja:
         name: 項目名
       user:
         name: ユーザー名
+      equipment:
+        name: 設備名
+        amount: 台数
   enums:
     facility:
       drop:
@@ -67,3 +71,11 @@ ja:
         unknown_open_all_time: 未記入
         yes_open_all_time: ○
         not_open_all_time: ✕
+    equipment:
+      name:
+        bench_press: ベンチプレス台
+        power_rack: パワーラック
+        flat_bench: フラットベンチ
+        adjustable_bench: アジャスタブルベンチ
+        smith_machine: スミスマシン
+        cable_pulley: ケーブルプーリー

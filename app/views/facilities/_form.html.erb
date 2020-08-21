@@ -30,8 +30,8 @@ $(document).ready(function () {
     <div>
       <% Equipment.names.keys.each do |key| %>
         <%= form.fields_for :equipments do |equipment_field| %>
-          <%= equipment_field.label :amount, key %>
-          <%= equipment_field.number_field :amount %>
+          <%= equipment_field.label :amount, I18n.t("enums.equipment.name.#{key}") %>
+          <%= equipment_field.number_field :amount %>台
           <%= equipment_field.hidden_field :name, value: key %>
         <% end %>
       <% end %>
