@@ -28,12 +28,14 @@ $(document).ready(function () {
       <%= form.select :city_id, City.all.map{|c| [c.name, c.id]}, {include_blank: '選択なし'}, class:"city_select" %>
     </div>
     <div>
+      <% i = 0 %>
       <% Equipment.names.keys.each do |key| %>
         <%= form.fields_for :equipments do |equipment_field| %>
           <%= equipment_field.label :amount, I18n.t("enums.equipment.name.#{key}") %>
-          <%= equipment_field.number_field :amount %>台
+          <%= equipment_field.number_field :amount, value: @previous_inputs[i] %>台
           <%= equipment_field.hidden_field :name, value: key %>
         <% end %>
+        <% i += 1 %>
       <% end %>
     </div>
     <div>
