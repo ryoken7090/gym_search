@@ -20,7 +20,6 @@ class FacilitiesController < ApplicationController
       if @facility.save
         redirect_to facility_path(@facility.id), notice: "施設情報を作成しました"
       else
-        binding.pry
         @previous_inputs = @facility.equipments.map {|amounts| amounts[:amount]}
         @facility.equipments.delete_all
         @facility.equipments.build
