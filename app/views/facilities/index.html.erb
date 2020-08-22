@@ -10,11 +10,38 @@
     <div class="row">
       <%= f.collection_check_boxes :city_id_in, @cities, :id, :name do |c| %>
       <div class="col-3 text-center">
-        <%= c.label %>
         <%= c.check_box %>
+        <%= c.label %>
       </div>
       <% end %>
     </div>
+  </div>
+  <div>
+    <%= f.radio_button :drop_gteq, 2 %>床引きデッド可能
+  </div>
+  <div>
+    <%= f.radio_button :parking_eq, 1 %>駐車場あり
+  </div>
+  <div>
+    <%= f.radio_button :shower_eq, 1 %>シャワーあり
+  </div>
+  <div>
+    <%= f.radio_button :recordable_eq, 1 %>動画撮影可能
+  </div>
+  <div>
+    <%= f.radio_button :visiter_eq, 1 %>ビジター利用可能
+  </div>
+  <div>
+    <%= f.radio_button :accessible_ten_min_eq, 1 %>徒歩10分圏内
+  </div>
+  <div>
+    <%= f.radio_button :trainer_eq, 1 %>トレーナー在籍
+  </div>
+  <div>
+    <%= f.radio_button :open_all_time, 1 %>夜間営業あり
+  </div>
+  <div>
+    月会費<%= f.number_field :monthly_fee_lteq %>円以下
   </div>
 
 

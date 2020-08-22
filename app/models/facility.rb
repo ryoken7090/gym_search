@@ -31,9 +31,9 @@ class Facility < ApplicationRecord
 
   enum drop: {
      unknown_drop: 0,
-     possible_drop: 1,
+     fail_drop: 1,
      accept_drop: 2,
-     fail_drop: 3
+     possible_drop: 3
    }
 
   enum parking: {

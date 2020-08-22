@@ -93,6 +93,16 @@ class FacilitiesController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit(:name_cont, city_id_in: [])
+    params.require(:q).permit(:name_cont,
+                              :drop_gteq,
+                              :parking_eq,
+                              :shower_eq,
+                              :recordable_eq,
+                              :visiter_eq,
+                              :accessible_ten_min_eq,
+                              :trainer_eq,
+                              :open_all_time_eq,
+                              :monthly_fee_lteq,
+                              city_id_in: [])
   end
 end
