@@ -2,6 +2,7 @@
 <%= form_with(model: @facility, url: facilities_path, local: true) do |form| %>
   <%= form.hidden_field :name %>
   <%= form.hidden_field :city_id %>
+  <%= form.hidden_field :equipment_numbers %>
   <%= form.hidden_field :drop %>
   <%= form.hidden_field :parking %>
   <%= form.hidden_field :shower %>

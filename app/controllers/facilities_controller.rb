@@ -7,10 +7,11 @@ class FacilitiesController < ApplicationController
 
   def new
     @facility = Facility.new
+      @facility.equipments.build
+      @previous_inputs = []
   end
 
   def create
-    params[:facility][:tag_ids]=params[:facility][:tag_ids].split
     @facility = Facility.new(facility_params)
     @facility.poster_id = current_user.id
     if params[:back]
@@ -19,6 +20,10 @@ class FacilitiesController < ApplicationController
       if @facility.save
         redirect_to facility_path(@facility.id), notice: "施設情報を作成しました"
       else
+        binding.pry
+        @previous_inputs = @facility.equipments.map {|amounts| amounts[:amount]}
+        @facility.equipments.delete_all
+        @facility.equipments.build
         render :new
       end
     end
@@ -31,6 +36,8 @@ class FacilitiesController < ApplicationController
   end
 
   def show
+    @equipment_keys = Equipment.names.keys
+    @equipments = @facility.equipments
   end
 
 
@@ -75,6 +82,7 @@ class FacilitiesController < ApplicationController
                                     :regular_holiday,
                                     :business_hours,
                                     :description,
-                                    tag_ids: [])
+                                    tag_ids: [],
+                                    equipments_attributes: [:amount, :name])
   end
 end
