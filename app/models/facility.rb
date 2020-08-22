@@ -13,16 +13,20 @@ class Facility < ApplicationRecord
   validates :tell, format: {with: /\A0\d{1,3}[-(]\d{1,4}[-)]\d{4}\z/}, allow_blank: true
   validates :monthly_fee, format: {with: /\A\d{4,6}\z/}, allow_blank: true
 
-  def avg_score(item)
+  def avg_score(category)
     unless self.reviews.empty?
-      reviews.average(item).round(1).to_f
+      reviews.average(category).round(1).to_f
     else
       0.0
     end
   end
 
-  def avg_score_percentage(item)
-    avg_score(item)*100/5
+  def avg_score_percentage(category)
+    avg_score(category)*100/5
+  end
+
+  def self.names_keys(item)
+    send(item.pluralize).keys.map {|k| [I18n.t("enums.facility.#{item}.#{k}"), k]}
   end
 
   enum drop: {
