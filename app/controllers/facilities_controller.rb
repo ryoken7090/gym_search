@@ -2,7 +2,14 @@ class FacilitiesController < ApplicationController
   before_action :set_facility, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :confirm,  :edit, :update, :destroy]
   def index
-    @facilities = Facility.all
+    @q = Facility.ransack(params[:q])
+    @cities = City.all
+    @facilities = @q.result(distinct: true)
+  end
+
+  def search
+    @q = Facility.search(search_params)
+    @facilities = @q.result(distinct: true)
   end
 
   def new
@@ -83,5 +90,9 @@ class FacilitiesController < ApplicationController
                                     :description,
                                     tag_ids: [],
                                     equipments_attributes: [:amount, :name])
+  end
+
+  def search_params
+    params.require(:q).permit(:name_cont, city_id_in: [])
   end
 end

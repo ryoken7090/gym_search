@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :facilities do
     collection do
+      get :search
       post :confirm
     end
     resources :reviews, only: [:create]
