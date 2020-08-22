@@ -7,18 +7,11 @@ class FacilitiesController < ApplicationController
 
   def new
     @facility = Facility.new
-    # @number_equipment_items = 6
-    # number_equipment_items.times {
       @facility.equipments.build
-    # }
-    # binding.pry
   end
 
   def create
-    # params[:facility][:tag_ids]=params[:facility][:tag_ids].split
-    # binding.pry
     @facility = Facility.new(facility_params)
-    # binding.pry
     @facility.poster_id = current_user.id
     if params[:back]
       render :new
@@ -26,6 +19,8 @@ class FacilitiesController < ApplicationController
       if @facility.save
         redirect_to facility_path(@facility.id), notice: "施設情報を作成しました"
       else
+        @facility.equipments.delete_all
+        @facility.equipments.build
         render :new
       end
     end
