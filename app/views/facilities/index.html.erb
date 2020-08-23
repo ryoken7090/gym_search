@@ -43,7 +43,9 @@
   <div>
     月会費<%= f.number_field :monthly_fee_lteq %>円以下
   </div>
-
+  <div>
+    <%= f.collection_check_boxes :search_all_tags, @tags, :id, :name %>
+  </div>
 
   <%= f.submit %>
 <% end %>

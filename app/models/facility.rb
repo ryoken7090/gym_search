@@ -29,6 +29,16 @@ class Facility < ApplicationRecord
     send(item.pluralize).keys.map {|k| [I18n.t("enums.facility.#{item}.#{k}"), k]}
   end
 
+
+  scope :search_all_tags, -> (*tag_ids) {
+    where(id: Tagging.select(:facility_id).where(tag_id: tag_ids).group(:facility_id).having("COUNT(DISTINCT taggings.tag_id) = ?", tag_ids.size - 1))
+  }
+
+  def self.ransackable_scopes(auth_object = nil)
+    %i[search_all_tags]
+  end
+
+
   enum drop: {
      unknown_drop: 0,
      fail_drop: 1,

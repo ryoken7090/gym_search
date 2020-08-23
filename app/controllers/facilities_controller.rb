@@ -4,6 +4,7 @@ class FacilitiesController < ApplicationController
   def index
     @q = Facility.ransack(params[:q])
     @cities = City.all
+    @tags = Tag.all
     @facilities = @q.result(distinct: true)
   end
 
@@ -103,6 +104,7 @@ class FacilitiesController < ApplicationController
                               :trainer_eq,
                               :open_all_time_eq,
                               :monthly_fee_lteq,
-                              city_id_in: [])
+                              city_id_in: [],
+                              search_all_tags: [])
   end
 end
