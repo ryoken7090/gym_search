@@ -3,6 +3,7 @@ class FacilitiesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :confirm,  :edit, :update, :destroy]
   def index
     @q = Facility.ransack(params[:q])
+    @facilities = Facility.all
     @cities = City.all
     @tags = Tag.all
     @facilities = @q.result(distinct: true)
@@ -105,6 +106,7 @@ class FacilitiesController < ApplicationController
                               :open_all_time_eq,
                               :monthly_fee_lteq,
                               city_id_in: [],
-                              search_all_tags: [])
+                              search_all_tags: [],
+                              search_equipments: [:amount, :name])
   end
 end

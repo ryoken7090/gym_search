@@ -46,9 +46,19 @@
   <div>
     <%= f.collection_check_boxes :search_all_tags, @tags, :id, :name %>
   </div>
+  <div>
+    <%# Equipment.names.keys.each do |key| %>
+      <%#= f.label 'search_equipments[][amount]', I18n.t("enums.equipment.name.#{key}") %>
+      <%#= f.number_field 'search_equipments[][amount]', value: "", min: 0, max: 20 %>
+      <%#= f.hidden_field 'search_equipments[][name]', value: key %>
+    <%# end %>
+  </div>
+  <div>
+  </div>
 
   <%= f.submit %>
 <% end %>
+
 
 <table>
   <tr>

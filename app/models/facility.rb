@@ -31,11 +31,25 @@ class Facility < ApplicationRecord
 
 
   scope :search_all_tags, -> (*tag_ids) {
+    binding.pry
     where(id: Tagging.select(:facility_id).where(tag_id: tag_ids).group(:facility_id).having("COUNT(DISTINCT taggings.tag_id) = ?", tag_ids.size - 1))
   }
 
+  scope :search_equipments, -> (*equipments) {
+    # max_input_number = 20
+    # equipments = equipments.delete_if{|equipment| equipment[:amount].empty?}
+    #
+    # where(id: Equipment.select(:facility_id).where("amount: ? and name = ? ", equipments[0][:amount].to_i..max_input_number, equipments[0][:name])
+    # .or(Equipment.where("amount: ? and name = ? ", equipments[1][:amount].to_i..max_input_number, equipment[1][:name]))
+    # .or(Equipment.where("amount: ? and name = ? ", equipments[2][:amount].to_i..max_input_number, equipment[2][:name]))
+    # .or(Equipment.where("amount: ? and name = ? ", equipments[3][:amount].to_i..max_input_number, equipment[3][:name]))
+    #
+    # ....
+    # .group(:facility_id).having("COUNT(DISTINCT equipments.name) = ?", equipments.size))
+  }
+
   def self.ransackable_scopes(auth_object = nil)
-    %i[search_all_tags]
+    %i[search_all_tags search_equipments]
   end
 
 
