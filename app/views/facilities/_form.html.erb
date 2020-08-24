@@ -32,7 +32,7 @@ $(document).ready(function () {
       <% Equipment.names.keys.each do |key| %>
         <%= form.fields_for :equipments do |equipment_field| %>
           <%= equipment_field.label :amount, I18n.t("enums.equipment.name.#{key}") %>
-          <%= equipment_field.number_field :amount, value: @previous_inputs[i] %>台
+          <%= equipment_field.number_field :amount, value: @previous_inputs[i], min: 0, max: 20 %>台
           <%= equipment_field.hidden_field :name, value: key %>
         <% end %>
         <% i += 1 %>
@@ -40,23 +40,23 @@ $(document).ready(function () {
     </div>
     <div>
       <%= form.label :drop %>
-      <%= form.select :drop, Facility.drops.keys.map {|k| [I18n.t("enums.facility.drop.#{k}"), k]} %>
+      <%= form.select :drop, Facility.names_keys("drop") %>
     </div>
     <div>
       <%= form.label :parking %>
-      <%= form.select :parking, Facility.parkings.keys.map {|k| [I18n.t("enums.facility.parking.#{k}"), k]} %>
+      <%= form.select :parking, Facility.names_keys("parking") %>
     </div>
     <div>
       <%= form.label :shower %>
-      <%= form.select :shower, Facility.showers.keys.map {|k| [I18n.t("enums.facility.shower.#{k}"), k]} %>
+      <%= form.select :shower, Facility.names_keys("shower") %>
     </div>
     <div>
       <%= form.label :recordable %>
-      <%= form.select :recordable, Facility.recordables.keys.map {|k| [I18n.t("enums.facility.recordable.#{k}"), k]} %>
+      <%= form.select :recordable, Facility.names_keys("recordable") %>
     </div>
     <div>
       <%= form.label :visiter %>
-      <%= form.select :visiter, Facility.visiters.keys.map {|k| [I18n.t("enums.facility.visiter.#{k}"), k]} %>
+      <%= form.select :visiter, Facility.names_keys("visiter") %>
     </div>
     <div>
       男性一ヶ月分の<%= form.label :monthly_fee %>(半角入力)
@@ -64,15 +64,15 @@ $(document).ready(function () {
     </div>
     <div>
       <%= form.label :accessible_ten_min %>
-      <%= form.select :accessible_ten_min, Facility.accessible_ten_mins.keys.map {|k| [I18n.t("enums.facility.accessible_ten_min.#{k}"), k]} %>
+      <%= form.select :accessible_ten_min, Facility.names_keys("accessible_ten_min") %>
     </div>
     <div>
       <%= form.label :trainer %>
-      <%= form.select :trainer, Facility.trainers.keys.map {|k| [I18n.t("enums.facility.trainer.#{k}"), k]} %>
+      <%= form.select :trainer, Facility.names_keys("trainer") %>
     </div>
     <div>
       <%= form.label :open_all_time %>
-      <%= form.select :open_all_time, Facility.open_all_times.keys.map {|k| [I18n.t("enums.facility.open_all_time.#{k}"), k]} %>
+      <%= form.select :open_all_time, Facility.names_keys("open_all_time") %>
     </div>
     <div>
       <%= form.label :station %>

@@ -58,7 +58,7 @@ ja:
       visiter:
         unknown_visiter: 未記入
         allow_visiter: ○
-        not_allow_visiter: ×
+        not_allow_visiter: ✕
       accessible_ten_min:
         unknown_accessible: 未記入
         accessible: ○

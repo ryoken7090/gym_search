@@ -1,7 +1,64 @@
-<h1>登録施設一覧</h1>
-<% if user_signed_in? %>
- <p><%= link_to '新規施設登録', new_facility_path %></p>
+<h1>施設検索</h1>
+<%= search_form_for @q, url: search_facilities_path do |f| %>
+
+  <div>
+    <%= f.label :name_cont, "施設名" %>
+    <%= f.search_field :name_cont %>
+  </div>
+  <div>
+    <%= f.label :city_id_in, '地区町村' %>
+    <div class="row">
+      <%= f.collection_check_boxes :city_id_in, @cities, :id, :name do |c| %>
+      <div class="col-3 text-center">
+        <%= c.check_box %>
+        <%= c.label %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <%= f.radio_button :drop_gteq, 2 %>床引きデッド可能
+  </div>
+  <div>
+    <%= f.radio_button :parking_eq, 1 %>駐車場あり
+  </div>
+  <div>
+    <%= f.radio_button :shower_eq, 1 %>シャワーあり
+  </div>
+  <div>
+    <%= f.radio_button :recordable_eq, 1 %>動画撮影可能
+  </div>
+  <div>
+    <%= f.radio_button :visiter_eq, 1 %>ビジター利用可能
+  </div>
+  <div>
+    <%= f.radio_button :accessible_ten_min_eq, 1 %>徒歩10分圏内
+  </div>
+  <div>
+    <%= f.radio_button :trainer_eq, 1 %>トレーナー在籍
+  </div>
+  <div>
+    <%= f.radio_button :open_all_time, 1 %>夜間営業あり
+  </div>
+  <div>
+    月会費<%= f.number_field :monthly_fee_lteq %>円以下
+  </div>
+  <div>
+    <%= f.collection_check_boxes :search_all_tags, @tags, :id, :name %>
+  </div>
+  <div>
+    <%# Equipment.names.keys.each do |key| %>
+      <%#= f.label 'search_equipments[][amount]', I18n.t("enums.equipment.name.#{key}") %>
+      <%#= f.number_field 'search_equipments[][amount]', value: "", min: 0, max: 20 %>
+      <%#= f.hidden_field 'search_equipments[][name]', value: key %>
+    <%# end %>
+  </div>
+  <div>
+  </div>
+
+  <%= f.submit %>
 <% end %>
+
 
 <table>
   <tr>

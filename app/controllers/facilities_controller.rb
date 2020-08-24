@@ -2,7 +2,16 @@ class FacilitiesController < ApplicationController
   before_action :set_facility, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :confirm,  :edit, :update, :destroy]
   def index
+    @q = Facility.ransack(params[:q])
     @facilities = Facility.all
+    @cities = City.all
+    @tags = Tag.all
+    @facilities = @q.result(distinct: true)
+  end
+
+  def search
+    @q = Facility.search(search_params)
+    @facilities = @q.result(distinct: true)
   end
 
   def new
@@ -20,7 +29,6 @@ class FacilitiesController < ApplicationController
       if @facility.save
         redirect_to facility_path(@facility.id), notice: "施設情報を作成しました"
       else
-        binding.pry
         @previous_inputs = @facility.equipments.map {|amounts| amounts[:amount]}
         @facility.equipments.delete_all
         @facility.equipments.build
@@ -84,5 +92,21 @@ class FacilitiesController < ApplicationController
                                     :description,
                                     tag_ids: [],
                                     equipments_attributes: [:amount, :name])
+  end
+
+  def search_params
+    params.require(:q).permit(:name_cont,
+                              :drop_gteq,
+                              :parking_eq,
+                              :shower_eq,
+                              :recordable_eq,
+                              :visiter_eq,
+                              :accessible_ten_min_eq,
+                              :trainer_eq,
+                              :open_all_time_eq,
+                              :monthly_fee_lteq,
+                              city_id_in: [],
+                              search_all_tags: [],
+                              search_equipments: [:amount, :name])
   end
 end

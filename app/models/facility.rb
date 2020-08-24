@@ -13,23 +13,51 @@ class Facility < ApplicationRecord
   validates :tell, format: {with: /\A0\d{1,3}[-(]\d{1,4}[-)]\d{4}\z/}, allow_blank: true
   validates :monthly_fee, format: {with: /\A\d{4,6}\z/}, allow_blank: true
 
-  def avg_score(item)
+  def avg_score(category)
     unless self.reviews.empty?
-      reviews.average(item).round(1).to_f
+      reviews.average(category).round(1).to_f
     else
       0.0
     end
   end
 
-  def avg_score_percentage(item)
-    avg_score(item)*100/5
+  def avg_score_percentage(category)
+    avg_score(category)*100/5
   end
+
+  def self.names_keys(item)
+    send(item.pluralize).keys.map {|k| [I18n.t("enums.facility.#{item}.#{k}"), k]}
+  end
+
+
+  scope :search_all_tags, -> (*tag_ids) {
+    binding.pry
+    where(id: Tagging.select(:facility_id).where(tag_id: tag_ids).group(:facility_id).having("COUNT(DISTINCT taggings.tag_id) = ?", tag_ids.size - 1))
+  }
+
+  scope :search_equipments, -> (*equipments) {
+    # max_input_number = 20
+    # equipments = equipments.delete_if{|equipment| equipment[:amount].empty?}
+    #
+    # where(id: Equipment.select(:facility_id).where("amount: ? and name = ? ", equipments[0][:amount].to_i..max_input_number, equipments[0][:name])
+    # .or(Equipment.where("amount: ? and name = ? ", equipments[1][:amount].to_i..max_input_number, equipment[1][:name]))
+    # .or(Equipment.where("amount: ? and name = ? ", equipments[2][:amount].to_i..max_input_number, equipment[2][:name]))
+    # .or(Equipment.where("amount: ? and name = ? ", equipments[3][:amount].to_i..max_input_number, equipment[3][:name]))
+    #
+    # ....
+    # .group(:facility_id).having("COUNT(DISTINCT equipments.name) = ?", equipments.size))
+  }
+
+  def self.ransackable_scopes(auth_object = nil)
+    %i[search_all_tags search_equipments]
+  end
+
 
   enum drop: {
      unknown_drop: 0,
-     possible_drop: 1,
+     fail_drop: 1,
      accept_drop: 2,
-     fail_drop: 3
+     possible_drop: 3
    }
 
   enum parking: {

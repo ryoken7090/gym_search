@@ -1,6 +1,7 @@
 class Equipment < ApplicationRecord
   self.table_name = 'equipments'
   belongs_to :facility
+  validates :amount, numericality: { greater_than_or_equal_to: 0}, allow_blank: true
 
   enum name: {
      bench_press: 0,
