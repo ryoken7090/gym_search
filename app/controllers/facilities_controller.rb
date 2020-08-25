@@ -74,7 +74,7 @@ class FacilitiesController < ApplicationController
       redirect_to facilities_path, notice: "施設情報を削除しました"
     else
       flash.now[:alert] = "投稿者と管理者のみ削除できます"
-      render: index
+      render :index
     end
   end
 
