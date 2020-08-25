@@ -69,7 +69,7 @@ class FacilitiesController < ApplicationController
   end
 
   def destroy
-    if current_user.admin? || current_user == @facility.user
+    if current_user.admin? || current_user == @facility.poster
       @facility.destroy
       redirect_to facilities_path, notice: "施設情報を削除しました"
     else
