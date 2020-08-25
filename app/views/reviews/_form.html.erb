@@ -1,4 +1,4 @@
-<h3>レビューを書く</h3>
+<h3>■レビューを書く</h3>
 
 <% if review.errors.any? %>
   <div id="error_explanation">
@@ -11,7 +11,7 @@
   </div>
 <% end %>
 
-<div class="rating-box">
+<div class="rating-box border">
   <%= form_with model: [facility, review], url: facility_reviews_path(facility), remote: true do |f| %>
     <div class="free_weight">
       <p>フリーウェイトエリアの評価</p>
@@ -65,10 +65,12 @@
     </div>
 
     <%= f.hidden_field :facility_id, value: facility.id %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <div class="action">
-      <%= f.submit "保存" %>
+    <div class="p-2">
+        <%= f.text_area :content, size: "40x4", placeholder: "自由にコメントをかいてください(任意記述)" %>
+    </div>
+
+    <div class="action p-3">
+      <%= f.submit "保存", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>

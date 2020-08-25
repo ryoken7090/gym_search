@@ -25,13 +25,45 @@ class Facility < ApplicationRecord
     avg_score(category)*100/5
   end
 
+
+  def visiter_symbol
+    if self.visiter == "allow_visiter"
+      "◎"
+    elsif self.visiter == "not_allow_visiter"
+      "×"
+    else
+      "-"
+    end
+  end
+
+  def accessible_ten_min_symbol
+    if self.accessible_ten_min == "accessible"
+      "◎"
+    elsif self.accessible_ten_min == "not_accessible"
+      "×"
+    else
+      "-"
+    end
+  end
+
+  def open_all_time_symbol
+    if self.open_all_time == "yes_open_all_time"
+      "◎"
+    elsif self.open_all_time == "not_open_all_time"
+      "×"
+    else
+      "-"
+    end
+  end
+
+
+
   def self.names_keys(item)
     send(item.pluralize).keys.map {|k| [I18n.t("enums.facility.#{item}.#{k}"), k]}
   end
 
 
   scope :search_all_tags, -> (*tag_ids) {
-    binding.pry
     where(id: Tagging.select(:facility_id).where(tag_id: tag_ids).group(:facility_id).having("COUNT(DISTINCT taggings.tag_id) = ?", tag_ids.size - 1))
   }
 

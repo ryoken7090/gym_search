@@ -13,7 +13,7 @@ ja:
         parking: 駐車場有無
         shower: シャワーの有無
         recordable: 撮影可否
-        visiter: ビジター利用可否
+        visiter: ビジター利用
         monthly_fee: 月会費
         accessible_ten_min: 徒歩10分圏内か
         trainer: トレーナーの在籍有無
@@ -40,25 +40,25 @@ ja:
     facility:
       drop:
         unknown_drop: 未記入
-        possible_drop: ○
-        accept_drop: △
-        fail_drop: ✕
+        possible_drop: 可能
+        accept_drop: 少しならOK
+        fail_drop: 不可
       parking:
         unknown_parking: 未記入
-        available_parking: ○
-        not_available_parking: ✕
+        available_parking: あり
+        not_available_parking: なし
       shower:
         unknown_shower: 未記入
-        available_shower: ○
-        not_available_shower: ✕
+        available_shower: あり
+        not_available_shower: なし
       recordable:
         unknown_record: 未記入
-        allow_record: ○
-        not_allow_record: ✕
+        allow_record: 可能
+        not_allow_record: 不可
       visiter:
         unknown_visiter: 未記入
-        allow_visiter: ○
-        not_allow_visiter: ✕
+        allow_visiter: あり
+        not_allow_visiter: なし
       accessible_ten_min:
         unknown_accessible: 未記入
         accessible: ○
@@ -69,8 +69,8 @@ ja:
         not_available_trainer: ✕
       open_all_time:
         unknown_open_all_time: 未記入
-        yes_open_all_time: ○
-        not_open_all_time: ✕
+        yes_open_all_time: あり
+        not_open_all_time: なし
     equipment:
       name:
         bench_press: ベンチプレス台
