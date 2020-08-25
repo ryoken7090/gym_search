@@ -5,7 +5,13 @@
   position: relative;
   width: 5em;
   height: 1em;
-  font-size: 25px;
+  font-size: 40px;
+}
+.individual-rating{
+  position: relative;
+  width: 5em;
+  height: 1em;
+  font-size: 20px;
 }
 .star-rating-front {
   position: absolute;
@@ -16,4 +22,14 @@
 }
 .star-rating-back {
   color: #ccc;
+}
+.result-star{
+  font-size: 30px;
+  color: #f2e700;
+}
+.result-symbol{
+  font-size: 20px;
+}
+.result-symbol{
+  font-size: 35px;
 }

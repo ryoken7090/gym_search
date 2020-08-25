@@ -8,8 +8,8 @@ $(document).ready(function () {
 </script>
 
 <% if @facility.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= @facility.errors.count %>件のエラーがあります。</h2>
+  <div id="error_explanation" class="mx-3">
+    <h3><%= @facility.errors.count %>件のエラーがあります。</h3>
     <ul>
     <% @facility.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -18,104 +18,108 @@ $(document).ready(function () {
   </div>
 <% end %>
 <%= form_with(model: @facility, local: true) do |form| %>
-  <div>
-    <div>
-      <%= form.label :name %>
-      <%= form.text_field :name %>
+  <div class="px-3">
+    <p>入力項目を分かる範囲で入力してください</p>
+    <div class="p-2">
+      <%= form.label :name %>(必須)
+      <%= form.text_field :name, size: "30" %>
     </div>
-    <div>
-      <%= form.label :city_id, "市区町村" %>
+    <div class="p-2">
+      <%= form.label :city_id, "市区町村(必須)" %>
       <%= form.select :city_id, City.all.map{|c| [c.name, c.id]}, {include_blank: '選択なし'}, class:"city_select" %>
     </div>
-    <div>
+    <div class="p-2" style="max-width: 700px;">
       <% i = 0 %>
       <% Equipment.names.keys.each do |key| %>
         <%= form.fields_for :equipments do |equipment_field| %>
+        <span class="p-2 mt-3">
           <%= equipment_field.label :amount, I18n.t("enums.equipment.name.#{key}") %>
           <%= equipment_field.number_field :amount, value: @previous_inputs[i], min: 0, max: 20 %>台
           <%= equipment_field.hidden_field :name, value: key %>
+        </span>
         <% end %>
         <% i += 1 %>
       <% end %>
     </div>
-    <div>
+    <div class="p-2">
+      男性一ヶ月分の<%= form.label :monthly_fee %>(半角入力)
+      <%= form.text_field :monthly_fee, size: "10"%>円
+    </div>
+    <div class="p-2">
       <%= form.label :drop %>
       <%= form.select :drop, Facility.names_keys("drop") %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :parking %>
       <%= form.select :parking, Facility.names_keys("parking") %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :shower %>
       <%= form.select :shower, Facility.names_keys("shower") %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :recordable %>
       <%= form.select :recordable, Facility.names_keys("recordable") %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :visiter %>
       <%= form.select :visiter, Facility.names_keys("visiter") %>
     </div>
-    <div>
-      男性一ヶ月分の<%= form.label :monthly_fee %>(半角入力)
-      <%= form.text_field :monthly_fee %>円
-    </div>
-    <div>
+    <div class="p-2">
       <%= form.label :accessible_ten_min %>
       <%= form.select :accessible_ten_min, Facility.names_keys("accessible_ten_min") %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :trainer %>
       <%= form.select :trainer, Facility.names_keys("trainer") %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :open_all_time %>
       <%= form.select :open_all_time, Facility.names_keys("open_all_time") %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :station %>
-      <%= form.text_field :station %>駅
+      <%= form.text_field :station, placeholder: "〇〇線〇〇駅" %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :description_station %>
-      <%= form.text_field :description_station %>
+      <%= form.text_field :description_station, placeholder: "徒歩〇分,〇km等" %>
     </div>
-    <div>
-      <%= form.label :tags, "タグ" %><br>
+    <div class="p-2">
       <%= collection_check_boxes(:facility, :tag_ids, Tag.all, :id, :name) do |b| %>
-        <%= b.label { b.check_box + b.text } %>
+      <span class="p-2"><%= b.label { b.check_box + b.text } %></span>
+
       <% end %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :address %>
       <div id="output_city"></div>
-      <%= form.text_field :address %>
+      <%= form.text_field :address, size: "30",placeholder: "市区町村名以降を入力してください" %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :tell %>(半角入力)
       <%= form.text_field :tell %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :hp_url %>
       <%= form.text_field :hp_url %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :regular_holiday %>
       <%= form.text_field :regular_holiday %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :business_hours %>
       <%= form.text_field :business_hours %>
     </div>
-    <div>
+    <div class="p-2">
       <%= form.label :description %>
       <%= form.text_field :description %>
     </div>
-    <div>
-      <%= form.submit %>
+    <div class="p-2 text-center">
+      <%= form.submit "投稿する", class: "btn btn-primary" %>
     </div>
+    <br>
+    <p><%= link_to '施設一覧へ', facilities_path, class: "p-2" %></p>
   </div>
 <% end %>
-<p><%= link_to '施設一覧へ', facilities_path %></p>

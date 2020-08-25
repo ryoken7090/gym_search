@@ -1,25 +1,25 @@
-<h3>各項目の評価</h3>
-<p><%= reviews.count %>件のレビュー</p>
 <div>
-  フリーウエイトエリア : <%= facility.avg_score(:free_weight) %>点
-  <div class="total-rating">
-    <div class="star-rating-front" style="width: <%= facility.avg_score_percentage(:free_weight) %>%">★★★★★</div>
-    <div class="star-rating-back">★★★★★</div>
+  <span class="h3">■各項目の評価</span>
+  <span>(<%= reviews.count %>件のレビュー)</span>
+  <div class="p-3">
+    フリーウエイトエリア：平均<span><%= facility.avg_score(:free_weight) %>点</span>
+    <div class="total-rating">
+      <div class="star-rating-front" style="width: <%= facility.avg_score_percentage(:free_weight) %>%">★★★★★</div>
+      <div class="star-rating-back">★★★★★</div>
+    </div>
   </div>
-</div>
-
-<div>
-  マシーンエリア : <%= facility.avg_score(:machine) %>点
-  <div class="total-rating">
-    <div class="star-rating-front" style="width: <%= facility.avg_score_percentage(:machine) %>%">★★★★★</div>
-    <div class="star-rating-back">★★★★★</div>
+  <div class="p-3">
+    マシーンエリア : 平均<%= facility.avg_score(:machine) %>点
+    <div class="total-rating">
+      <div class="star-rating-front" style="width: <%= facility.avg_score_percentage(:machine) %>%">★★★★★</div>
+      <div class="star-rating-back">★★★★★</div>
+    </div>
   </div>
-</div>
-
-<div>
-  有酸素エリア : <%= facility.avg_score(:caedio) %>点
-  <div class="total-rating">
-    <div class="star-rating-front" style="width: <%= facility.avg_score_percentage(:caedio) %>%">★★★★★</div>
-    <div class="star-rating-back">★★★★★</div>
+  <div class="p-3">
+    有酸素エリア : 平均<%= facility.avg_score(:caedio) %>点
+    <div class="total-rating">
+      <div class="star-rating-front" style="width: <%= facility.avg_score_percentage(:caedio) %>%">★★★★★</div>
+      <div class="star-rating-back">★★★★★</div>
+    </div>
   </div>
 </div>

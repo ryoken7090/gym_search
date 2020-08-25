@@ -1,17 +1,72 @@
-<h1>登録施設一覧</h1>
-<% if user_signed_in? %>
- <p><%= link_to '新規施設登録', new_facility_path %></p>
-<% end %>
-
-<table>
-  <tr>
-    <th>施設名</th>
-  </tr>
-<% @facilities.each do |facility| %>
-  <tr>
-    <td><%= facility.name %></td>
-    <td><%= facility.city.name %></td>
-    <td><%= link_to '詳細を確認', facility_path(facility.id) %></td>
-  </tr>
-<% end %>
-</table>
+<div class="p-3">
+  <span class="h2 title">検索結果</span>
+</div>
+<div class="row mx-2">
+  <% @facilities.each do |facility| %>
+    <div class="col-lg-6">
+      <div class="card m-2">
+        <div class="mb-2">
+          <h3 class="text-center">
+            <%= link_to facility.name, facility_path(facility.id), class:"link" %>
+          </h3>
+          <div class="text-center">
+            <span class="text-muted" style="border-bottom: solid 1px;"><%= facility.city.name %></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 text-center p-2">
+            <div class="">
+              フリーウェイト
+            </div>
+            <div class="">
+              <span class="fa fa-star result-star"></span>
+              <span class="result-num"><%= facility.avg_score(:free_weight) %></span>
+            </div>
+          </div>
+          <div class="col-4 text-center p-2">
+            <div class="">
+              マシン
+            </div>
+            <div class="">
+              <span class="fa fa-star result-star"></span>
+              <span class="result-num"><%= facility.avg_score(:machine) %></span>
+            </div>
+          </div>
+          <div class="col-4 text-center p-2">
+            <div class="">
+              有酸素
+            </div>
+            <div class="">
+              <span class="fa fa-star result-star"></span>
+              <span class="result-num"><%= facility.avg_score(:caedio) %></span>
+            </div>
+          </div>
+          <div class="col-4 text-center p-2">
+            <div class="">
+              ビジター利用
+            </div>
+            <div class="">
+              <span class="result-symbol"><%= facility.visiter_symbol %></span>
+            </div>
+          </div>
+          <div class="col-4 text-center p-2">
+            <div class="">
+              駅チカ
+            </div>
+            <div class="">
+              <span class="result-symbol"><%= facility.accessible_ten_min_symbol %></span>
+            </div>
+          </div>
+          <div class="col-4 text-center p-2">
+            <div class="">
+              24H営業
+            </div>
+            <div class="">
+              <span class="result-symbol"><%= facility.open_all_time_symbol %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

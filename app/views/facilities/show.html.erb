@@ -1,154 +1,156 @@
-<div class="container">
-  <div class="row">
-    <div class="main col-sm-10">
-      <h1><%= @facility.name %></h1>
-      <p><%= @facility.city.name %></p>
-      <div id="total_ratings">
-        <%= render partial: 'reviews/total', locals: { reviews: @facility.reviews, facility: @facility } %>
-      </div>
-      <h3>設備</h3>
-      <table>
-        <% @equipment_keys.each do |key| %>
-        <tr>
-          <td><%= I18n.t("enums.equipment.name.#{key}") %></td>
-          <td>
-            <% if @equipments.find_by(name: key).amount.present?  %>
-              <%= @equipments.find_by(name: key).amount %>台
-            <% else %>
-              未記入
-            <% end %>
-          </td>
-        </tr>
-        <% end %>
-      </table>
+<div class="px-5 py-3">
+  <div>
+    <span class="h2 title"><%= @facility.name %></span>
+  </div>
+  <div id="total_ratings" class="p-3">
+    <%= render partial: 'reviews/total', locals: { reviews: @facility.reviews, facility: @facility } %>
+  </div>
 
-
-
-      <h3>その他設備・特徴</h3>
-      <table>
-        <tr>
-          <td>ドロップ可否</td>
-          <td><%= @facility.drop_i18n %></td>
-        </tr>
-        <tr>
-          <td>駐車場の有無</td>
-          <td><%= @facility.parking_i18n %></td>
-        </tr>
-        <tr>
-          <td>シャワーの有無</td>
-          <td><%= @facility.shower_i18n %></td>
-        </tr>
-        <tr>
-          <td>撮影の可否</td>
-          <td><%= @facility.recordable_i18n %></td>
-        </tr>
-        <tr>
-          <td>夜間の営業</td>
-          <td><%= @facility.open_all_time_i18n %></td>
-        </tr>
-        <tr>
-          <td>ビジター利用の可否</td>
-          <td><%= @facility.visiter_i18n %></td>
-        </tr>
-        <tr>
-          <td>駅から徒歩10分以内</td>
-          <td><%= @facility.accessible_ten_min_i18n %></td>
-        </tr>
-        <tr>
-          <td>トレーナーの有無</td>
-          <td><%= @facility.trainer_i18n %></td>
-        </tr>
-        <tr>
-          <td>月会費(男性一ヶ月)</td>
-          <% if @facility.monthly_fee.blank? %>
-            <td>不明</td>
+  <div class="p-3">
+    <h3>■主要な設備</h3>
+    <div class="row">
+      <% @equipment_keys.each do |key| %>
+        <div class="col-sm-6 col-lg-4 col-xl-3 p-2">
+          <%= I18n.t("enums.equipment.name.#{key}") %> :
+          <% if @equipments.find_by(name: key).amount.present?  %>
+            <%= @equipments.find_by(name: key).amount %>台
           <% else %>
-            <td><%= @facility.monthly_fee %>円</td>
+            未記入
           <% end %>
-        </tr>
-
-      </table>
-
-      <p>ついているタグ</p>
-      <ul>
-        <% @facility.tags.each do |tag| %>
-          <li><%= tag.name %></li>
-        <% end %>
-      </ul>
-
-      <h3>備考</h3>
-      <p><%= @facility.description %></p>
-
-      <h3>施設概要</h3>
-      <table>
-        <tr>
-          <td>施設名：<%= @facility.name %></td>
-          <td>住所：<%= @facility.address %></td>
-        </tr>
-        <tr>
-          <td>電話番号：
-            <% if @facility.tell.blank? %>
-             登録なし
-            <% else %>
-              <%= @facility.tell %>
-            <% end %>
-          </td>
-          <td>ホームページ：
-            <% if @facility.hp_url.blank? %>
-              登録なし
-            <% else %>
-              <%= @facility.hp_url %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>最寄り駅：
-            <% if @facility.station.blank? %>
-              登録なし
-            <% else %>
-              <%= @facility.station %>駅
-            <% end %>
-          </td>
-          <td>駅からの距離：
-            <% if @facility.description_station.blank? %>
-              登録なし
-            <% else %>
-              <%= @facility.description_station %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>定休日：
-            <% if @facility.regular_holiday.blank? %>
-              登録なし
-            <% else %>
-              <%= @facility.regular_holiday %>
-            <% end %>
-          </td>
-          <td>営業時間：
-            <% if @facility.business_hours.blank? %>
-              登録なし
-            <% else %>
-              <%= @facility.business_hours %>
-            <% end %>
-          </td>
-        </tr>
-
-      </table>
-      <% if user_signed_in? %>
-        <p><%= link_to '施設情報を編集する', edit_facility_path(@facility.id) %></p>
-        <p><%= link_to '施設情報を削除する', facility_path(@facility.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></p>
+        </div>
       <% end %>
-
-      <div id="reviews_area">
-        <%= render partial: 'reviews/index', locals: { reviews: @facility.reviews, facility: @facility } %>
-      </div>
-      <div class="new_review_area">
-        <%= render partial: 'reviews/form', locals: { review: @facility.reviews.build, facility: @facility } %>
-      </div>
-
-
-      <p><%= link_to '施設一覧へ', facilities_path %></p>
     </div>
   </div>
+
+  <div class="p-3">
+    <h3>■その他の設備や特徴</h3>
+    <div class="row">
+      <div class="col-sm-6 col-lg-4 col-xl-3 p-2">
+        ドロップ:
+        <%= @facility.drop_i18n %>
+      </div>
+      <div class="col-sm-6 col-lg-4 col-xl-3 p-2">
+        駐車場：
+        <%= @facility.parking_i18n %>
+      </div>
+      <div class="col-sm-6 col-lg-4 col-xl-3 p-2">
+        シャワー：
+        <%= @facility.shower_i18n %>
+      </div>
+      <div class="col-sm-6 col-lg-4 col-xl-3 p-2">
+        撮影：
+        <%= @facility.recordable_i18n %>
+      </div>
+      <div class="col-sm-6 col-lg-4 col-xl-3 p-2">
+        夜間の営業：
+        <%= @facility.open_all_time_i18n %>
+      </div>
+      <div class="col-sm-6 col-lg-4 col-xl-3 p-2">
+        ビジター利用の可否：
+        <%= @facility.visiter_i18n %>
+      </div>
+      <div class="col-sm-6 col-lg-4 col-xl-3 p-2">
+        駅から徒歩10分以内：
+        <%= @facility.accessible_ten_min_i18n %>
+      </div>
+      <div class="col-sm-6 col-lg-4 col-xl-3 p-2">
+        トレーナーの有無：
+        <%= @facility.trainer_i18n %>
+      </div>
+      <div class="col-sm-6 col-lg-4 col-xl-3 p-2">
+        月会費(男性一ヶ月)：
+        <% if @facility.monthly_fee.blank? %>
+          不明
+        <% else %>
+          <%= @facility.monthly_fee %>円
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="p-3">
+    <h3>■つけられたタグ</h3>
+    <div class="row">
+      <% @facility.tags.each do |tag| %>
+        <div class="col-sm-6 col-lg-4 col-xl-3 p-2">
+          ・<%= tag.name %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="p-3">
+    <h3>■備考</h3>
+    <p><%= @facility.description %></p>
+  </div>
+  <div class="p-3">
+    <h3>■施設概要</h3>
+    <table class="table table-bordered">
+      <tr>
+        <td>施設名：<%= @facility.name %></td>
+        <td>住所：東京都<%= @facility.city.name %><%= @facility.address %>
+        </td>
+      </tr>
+      <tr>
+        <td>電話番号：
+          <% if @facility.tell.blank? %>
+           登録なし
+          <% else %>
+            <%= @facility.tell %>
+          <% end %>
+        </td>
+        <td>ホームページ：
+          <% if @facility.hp_url.blank? %>
+            登録なし
+          <% else %>
+            <%= @facility.hp_url %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>最寄り駅：
+          <% if @facility.station.blank? %>
+            登録なし
+          <% else %>
+            <%= @facility.station %>駅
+          <% end %>
+        </td>
+        <td>駅からの距離：
+          <% if @facility.description_station.blank? %>
+            登録なし
+          <% else %>
+            <%= @facility.description_station %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>定休日：
+          <% if @facility.regular_holiday.blank? %>
+            登録なし
+          <% else %>
+            <%= @facility.regular_holiday %>
+          <% end %>
+        </td>
+        <td>営業時間：
+          <% if @facility.business_hours.blank? %>
+            登録なし
+          <% else %>
+            <%= @facility.business_hours %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <% if user_signed_in? %>
+    <p><%= link_to '施設情報を編集する', edit_facility_path(@facility.id) %></p>
+    <p><%= link_to '施設情報を削除する', facility_path(@facility.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></p>
+  <% end %>
+
+  <div id="reviews_area">
+    <%= render partial: 'reviews/index', locals: { reviews: @reviews, facility: @facility } %>
+  </div>
+  <% if user_signed_in? %>
+  <div class="new_review_area p-3">
+    <%= render partial: 'reviews/form', locals: { review: @review, facility: @facility } %>
+  </div>
+  <% end %>
 </div>
+      <p><%= link_to '施設一覧へ', facilities_path %></p>

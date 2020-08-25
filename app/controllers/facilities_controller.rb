@@ -46,16 +46,24 @@ class FacilitiesController < ApplicationController
   def show
     @equipment_keys = Equipment.names.keys
     @equipments = @facility.equipments
+    @reviews = Review.where(facility_id: @facility.id)
+    @review = @facility.reviews.build
   end
 
 
   def edit
+    @previous_inputs = @facility.equipments.map {|amounts| amounts[:amount]}
+    @facility.equipments.delete_all
+    @facility.equipments.build
   end
 
   def update
     if @facility.update(facility_params)
       redirect_to facility_path(@facility.id), notice: "施設情報を編集しました"
     else
+      @previous_inputs = @facility.equipments.map {|amounts| amounts[:amount]}
+      @facility.equipments.delete_all
+      @facility.equipments.build
       render :edit
     end
   end
