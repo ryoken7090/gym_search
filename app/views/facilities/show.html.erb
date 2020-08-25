@@ -145,16 +145,12 @@
   <% end %>
 
   <div id="reviews_area">
-    <%= render partial: 'reviews/index', locals: { reviews: @facility.reviews, facility: @facility } %>
+    <%= render partial: 'reviews/index', locals: { reviews: @reviews, facility: @facility } %>
   </div>
+  <% if user_signed_in? %>
   <div class="new_review_area p-3">
-    <%= render partial: 'reviews/form', locals: { review: @facility.reviews.build, facility: @facility } %>
+    <%= render partial: 'reviews/form', locals: { review: @review, facility: @facility } %>
   </div>
+  <% end %>
 </div>
-
-
-
-
-
-
       <p><%= link_to '施設一覧へ', facilities_path %></p>

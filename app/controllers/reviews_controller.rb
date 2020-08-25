@@ -7,9 +7,11 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
+        flash.now[:notice] = 'コメントが投稿されました'
         format.js { render :index }
       else
-        format.html { redirect_to facility_path(@facility), notice: '投稿できませんでした...' }
+        flash.now[:notice] = 'コメントの投稿に失敗しました'
+        format.js { render :index }
       end
     end
   end

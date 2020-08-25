@@ -46,6 +46,8 @@ class FacilitiesController < ApplicationController
   def show
     @equipment_keys = Equipment.names.keys
     @equipments = @facility.equipments
+    @reviews = Review.where(facility_id: @facility.id)
+    @review = @facility.reviews.build
   end
 
 
