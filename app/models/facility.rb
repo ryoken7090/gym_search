@@ -14,7 +14,7 @@ class Facility < ApplicationRecord
   validates :monthly_fee, format: {with: /\A\d{4,6}\z/}, allow_blank: true
 
   def avg_score(category)
-    unless self.reviews.empty?
+    unless self.reviews.average(category).blank?
       reviews.average(category).round(1).to_f
     else
       0.0

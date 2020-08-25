@@ -1,3 +1,7 @@
-<h1>Users#show</h1>
-<p>名前 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
+<div class="p-3">
+  <span class="h2 title"><%= @user.name %>さんのページ</span>
+</div>
+<% unless @facilities.blank? %>
+  <h3 class="p-3">■投稿した設備情報</h3>
+  <%= render 'facilities/list' %>
+<% end %>

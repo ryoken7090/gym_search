@@ -37,11 +37,11 @@ class FacilitiesController < ApplicationController
     end
   end
 
-  def confirm
-    @facility = Facility.new(facility_params)
-    @facility.poster_id = current_user.id
-    render :new if @facility.invalid?
-  end
+  # def confirm
+  #   @facility = Facility.new(facility_params)
+  #   @facility.poster_id = current_user.id
+  #   render :new if @facility.invalid?
+  # end
 
   def show
     @equipment_keys = Equipment.names.keys
@@ -69,8 +69,13 @@ class FacilitiesController < ApplicationController
   end
 
   def destroy
-    @facility.destroy
-    redirect_to facilities_path, notice: "施設情報を削除しました"
+    if current_user.admin? || current_user == @facility.user
+      @facility.destroy
+      redirect_to facilities_path, notice: "施設情報を削除しました"
+    else
+      flash.now[:alert] = "投稿者と管理者のみ削除できます"
+      render :index
+    end
   end
 
   private

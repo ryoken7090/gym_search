@@ -6,6 +6,7 @@ ja:
       tag: タグ
       user: ユーザー
       equipment: 設備
+      review: レビュー
     attributes:
       facility:
         name: 施設名
@@ -36,6 +37,11 @@ ja:
       equipment:
         name: 設備名
         amount: 台数
+      review:
+        free_weight: フリーウエイトエリア
+        machine: マシンエリア
+        caedio: 有酸素エリア
+        content: コメント
   enums:
     facility:
       drop:

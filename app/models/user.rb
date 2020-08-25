@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
-  has_many :facilities, foreign_key: 'poster_id'
+  has_many :facilities, class_name: "Facility", foreign_key: 'poster_id'
   has_many :reviews, dependent: :destroy
 
 end

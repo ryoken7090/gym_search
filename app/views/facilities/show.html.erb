@@ -12,10 +12,12 @@
       <% @equipment_keys.each do |key| %>
         <div class="col-sm-6 col-lg-4 col-xl-3 p-2">
           <%= I18n.t("enums.equipment.name.#{key}") %> :
-          <% if @equipments.find_by(name: key).amount.present?  %>
-            <%= @equipments.find_by(name: key).amount %>台
-          <% else %>
+          <% if @equipments.find_by(name: key).nil?  %>
             未記入
+          <% elsif @equipments.find_by(name: key).amount.blank?%>
+            未記入
+          <% else %>
+            <%= @equipments.find_by(name: key).amount %>台
           <% end %>
         </div>
       <% end %>
@@ -139,10 +141,18 @@
       </tr>
     </table>
   </div>
-  <% if user_signed_in? %>
-    <p><%= link_to '施設情報を編集する', edit_facility_path(@facility.id) %></p>
-    <p><%= link_to '施設情報を削除する', facility_path(@facility.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></p>
-  <% end %>
+  <div class="text-center">
+    <% if user_signed_in? %>
+      <%= link_to(edit_facility_path(@facility.id), class: "btn btn-warning mx-5") do %>
+        編集する <i class="fa fa-edit"></i>
+      <% end %>
+      <% if current_user.admin? || current_user == @facility.poster %>
+        <%= link_to(facility_path(@facility.id), class: "btn btn-danger mx-5", method: :delete, data: { confirm: '本当に削除していいですか？'}) do %>
+          削除する <i class="fa fa-trash-o"></i>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 
   <div id="reviews_area">
     <%= render partial: 'reviews/index', locals: { reviews: @reviews, facility: @facility } %>
