@@ -146,7 +146,7 @@
       <%= link_to(edit_facility_path(@facility.id), class: "btn btn-warning mx-5") do %>
         編集する <i class="fa fa-edit"></i>
       <% end %>
-      <% if current_user.admin? || current_user == @facility.user %>
+      <% if current_user.admin? || current_user == @facility.poster %>
         <%= link_to(facility_path(@facility.id), class: "btn btn-danger mx-5", method: :delete, data: { confirm: '本当に削除していいですか？'}) do %>
           削除する <i class="fa fa-trash-o"></i>
         <% end %>
