@@ -37,11 +37,11 @@ class FacilitiesController < ApplicationController
     end
   end
 
-  def confirm
-    @facility = Facility.new(facility_params)
-    @facility.poster_id = current_user.id
-    render :new if @facility.invalid?
-  end
+  # def confirm
+  #   @facility = Facility.new(facility_params)
+  #   @facility.poster_id = current_user.id
+  #   render :new if @facility.invalid?
+  # end
 
   def show
     @equipment_keys = Equipment.names.keys
