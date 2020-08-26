@@ -40,7 +40,7 @@ RSpec.describe Facility, type: :system do
         fill_in '施設名', with: 'テスト施設'
         select '選択なし', from: '市区町村(必須)'
         click_button '投稿する'
-        expect(page).to have_content 'Cityを入力してください'
+        expect(page).to have_content '市区町村を入力してください'
       end
     end
 

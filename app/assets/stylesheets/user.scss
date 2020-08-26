@@ -1,0 +1,31 @@
+.sign_in_container{
+  width: 400px;
+  border: solid 1px orange;
+  background: white;
+  display:inline-block;
+}
+
+.login_container{
+  width: 400px;
+  border: solid 1px skyblue;
+  background: white;
+  display:inline-block;
+}
+
+.form-group{
+  margin: 20px;
+}
+
+.signin_header{
+  background: orange;
+  padding: 15px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.login_header{
+  background: skyblue;
+  padding: 15px;
+  font-size: 25px;
+  text-align: center;
+}
