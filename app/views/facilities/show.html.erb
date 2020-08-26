@@ -158,8 +158,9 @@
     <div id="reviews_area">
       <%= render partial: 'reviews/index', locals: { reviews: @reviews, facility: @facility } %>
     </div>
-    <% if user_signed_in? %>
-    <div class="new_review_area p-3">
+    <% binding.pry %>
+    <% if user_signed_in? && current_user.reviews.find_by(facility_id: @facility.id).nil? %>
+    <div class="p-3", id="new_review_area">
       <%= render partial: 'reviews/form', locals: { review: @review, facility: @facility } %>
     </div>
     <% end %>

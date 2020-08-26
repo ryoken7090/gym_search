@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
         flash.now[:notice] = 'コメントが投稿されました'
-        format.js { render :index }
+        format.js { render :create }
       else
         flash.now[:notice] = 'コメントの投稿に失敗しました'
         format.js { render :index }

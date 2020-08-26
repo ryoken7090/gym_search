@@ -1,0 +1,3 @@
+$("#reviews_area").html("<%= j(render 'reviews/index', { reviews: @review.facility.reviews, facility: @review.facility }) %>")
+$("#total_ratings").html("<%= j(render 'reviews/total', { reviews: @review.facility.reviews, facility: @review.facility }) %>")
+$('#new_review_area').remove();
