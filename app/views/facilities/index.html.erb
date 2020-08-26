@@ -1,71 +1,73 @@
-<div class="p-3">
-  <span class="h2 title">施設検索</span>
-</div>
-<%= search_form_for @q, url: search_facilities_path do |f| %>
-<h4 class="p-2">STEP1 地域を選択する</h4>
-<div class="row">
-  <%= f.collection_check_boxes :city_id_in, @cities, :id, :name do |c| %>
-  <div class="col-6 col-md-3 col-xl-2 text-center">
-    <%= c.check_box %>
-    <%= c.label %>
+<div class="main mt-2 bg-white">
+  <div class="p-3">
+    <span class="h2 title">施設検索</span>
   </div>
-  <% end %>
-</div>
-<br>
-<h4 class="p-2">STEP2 条件を選択する</h4>
-<div class="row">
-  <div class="col-sm-6 col-lg-4 text-center p-2">
-    <%= f.label :name_cont, "施設名" %>
-    <%= f.search_field :name_cont %>
-  </div>
-  <div class="col-sm-6 col-lg-4 text-center p-2">
-    月会費<%= f.number_field :monthly_fee_lteq, min: 0, max: 100000 %>円以下
-  </div>
-</div>
-
-<div class="row mx-5">
-  <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2 p-2">
-    <%= f.check_box :drop_gteq, {}, 2, '' %>床引きデッド可能
-  </div>
-  <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
-    <%= f.check_box :parking_eq, {}, 1, '' %>駐車場あり
-  </div>
-  <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
-    <%= f.check_box :shower_eq, {}, 1, '' %>シャワーあり
-  </div>
-  <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
-    <%= f.check_box :recordable_eq, {}, 1, '' %>動画撮影可能
-  </div>
-  <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
-    <%= f.check_box :visiter_eq, {}, 1, '' %>ビジター利用可能
-  </div>
-  <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
-    <%= f.check_box :accessible_ten_min_eq, {}, 1, '' %>徒歩10分圏内
-  </div>
-  <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
-    <%= f.check_box :trainer_eq, {}, 1, '' %>トレーナー在籍
-  </div>
-  <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
-    <%= f.check_box :open_all_time_eq, {}, 1, '' %>夜間営業あり
-  </div>
-
+  <%= search_form_for @q, url: search_facilities_path do |f| %>
+  <h4 class="p-2">STEP1 地域を選択する</h4>
   <div class="row">
-    <%= f.collection_check_boxes :search_all_tags, @tags, :id, :name do |c| %>
+    <%= f.collection_check_boxes :city_id_in, @cities, :id, :name do |c| %>
+    <div class="col-6 col-md-3 col-xl-2 text-center">
+      <%= c.check_box %>
+      <%= c.label %>
+    </div>
+    <% end %>
+  </div>
+  <br>
+  <h4 class="p-2">STEP2 条件を選択する</h4>
+  <div class="row">
+    <div class="col-sm-6 col-lg-4 text-center p-2">
+      <%= f.label :name_cont, "施設名" %>
+      <%= f.search_field :name_cont %>
+    </div>
+    <div class="col-sm-6 col-lg-4 text-center p-2">
+      月会費<%= f.number_field :monthly_fee_lteq, min: 0, max: 100000 %>円以下
+    </div>
+  </div>
+
+  <div class="row mx-5">
+    <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2 p-2">
+      <%= f.check_box :drop_gteq, {}, 2, '' %>床引きデッド可能
+    </div>
+    <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
+      <%= f.check_box :parking_eq, {}, 1, '' %>駐車場あり
+    </div>
+    <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
+      <%= f.check_box :shower_eq, {}, 1, '' %>シャワーあり
+    </div>
+    <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
+      <%= f.check_box :recordable_eq, {}, 1, '' %>動画撮影可能
+    </div>
+    <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
+      <%= f.check_box :visiter_eq, {}, 1, '' %>ビジター利用可能
+    </div>
+    <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
+      <%= f.check_box :accessible_ten_min_eq, {}, 1, '' %>徒歩10分圏内
+    </div>
+    <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
+      <%= f.check_box :trainer_eq, {}, 1, '' %>トレーナー在籍
+    </div>
+    <div class="col-sm-4 col-lg-3 col-xl-2 text-center p-2">
+      <%= f.check_box :open_all_time_eq, {}, 1, '' %>夜間営業あり
+    </div>
+
+    <div class="row">
+      <%= f.collection_check_boxes :search_all_tags, @tags, :id, :name do |c| %>
       <div class="col-md-6 col-xl-3 text-center p-2">
         <%= c.check_box %>
         <%= c.label %>
       </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
     <!-- <div> -->
     <%# Equipment.names.keys.each do |key| %>
-      <%#= f.label 'search_equipments[][amount]', I18n.t("enums.equipment.name.#{key}") %>
-      <%#= f.number_field 'search_equipments[][amount]', value: "", min: 0, max: 20 %>
-      <%#= f.hidden_field 'search_equipments[][name]', value: key %>
+    <%#= f.label 'search_equipments[][amount]', I18n.t("enums.equipment.name.#{key}") %>
+    <%#= f.number_field 'search_equipments[][amount]', value: "", min: 0, max: 20 %>
+    <%#= f.hidden_field 'search_equipments[][name]', value: key %>
     <%# end %>
     <!-- </div> -->
+  </div>
+  <div class="text-center py-3">
+    <%= f.submit("この条件で一括検索", class: "btn btn-primary btn-lg") %>
+  </div>
+  <% end %>
 </div>
-<div class="text-center py-3">
-  <%= f.submit("この条件で一括検索", class: "btn btn-primary btn-lg") %>
-</div>
-<% end %>

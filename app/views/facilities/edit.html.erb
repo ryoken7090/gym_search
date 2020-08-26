@@ -1,7 +1,9 @@
-<div class="p-3">
-  <span class="h2 title">施設編集</span>
+<div class="main mt-2 bg-white">
+  <div class="p-3">
+    <span class="h2 title">施設編集</span>
+  </div>
+  <div class="row">
+    <%= render 'form' %>
+  </div>
+  <p><%= link_to '施設詳細へ', facility_path(@facility.id) %></p>
 </div>
-<div class="row">
-  <%= render 'form' %>
-</div>
-<p><%= link_to '施設詳細へ', facility_path(@facility.id) %></p>

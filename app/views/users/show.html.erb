@@ -1,7 +1,9 @@
-<div class="p-3">
-  <span class="h2 title"><%= @user.name %>さんのページ</span>
-</div>
-<% unless @facilities.blank? %>
+<div class="main mt-2 bg-white">
+  <div class="p-3">
+    <span class="h2 title"><%= @user.name %>さんのページ</span>
+  </div>
+  <% unless @facilities.blank? %>
   <h3 class="p-3">■投稿した設備情報</h3>
   <%= render 'facilities/list' %>
-<% end %>
+  <% end %>
+</div>
