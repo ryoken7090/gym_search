@@ -59,6 +59,9 @@ class FacilitiesController < ApplicationController
 
   def update
     if @facility.update(facility_params)
+      Rails.logger.level = 0
+      logger.debug "施設情報が編集されました"
+      logger.debug "編集者のid: #{current_user.id} 編集された施設のid: #{@facility.id}"
       redirect_to facility_path(@facility.id), notice: "施設情報を編集しました"
     else
       @previous_inputs = @facility.equipments.map {|amounts| amounts[:amount]}
