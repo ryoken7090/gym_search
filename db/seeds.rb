@@ -18,11 +18,20 @@ Tag.create([{name: "40kg以上のダンベル所有"},
             {name: "日焼けマシーンがある"}
             ])
 
-10.times do |n|
+20.times do |n|
   User.create!(
     name: "ユーザー#{n}",
     email: "example#{n}@example.com",
     password: "password"
+  )
+end
+
+5.times do |n|
+  User.create!(
+    name: "管理者ユーザー#{n}",
+    email: "admin#{n}@example.com",
+    password: "password",
+    admin: true
   )
 end
 

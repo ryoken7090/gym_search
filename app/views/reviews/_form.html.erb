@@ -1,6 +1,6 @@
 <h3>■レビューを書く</h3>
-<%= render 'layouts/flash' %>
-<p id="notice"><%= notice %></p>
+<%#= render 'layouts/flash' %>
+<p id="notice"><%#= notice %></p>
 <div class="rating-box border">
   <%= form_with model: [facility, review], url: facility_reviews_path(facility), remote: true do |f| %>
     <% if review.errors.any? %>
