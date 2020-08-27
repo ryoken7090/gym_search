@@ -35,7 +35,7 @@ end
   )
 end
 
-20.times do |n|
+26.times do |n|
   Facility.create!(
     name: "#{('A'..'Z').to_a[n]}ジム",
     drop: rand(0..3),
@@ -51,7 +51,7 @@ end
     monthly_fee: [5000, 7000, 10000, 12000].sample
   )
 end
-20.times do |n|
+50.times do |n|
   Facility.create!(
     name: "Test Fitness #{n}号店",
     drop: rand(0..3),
