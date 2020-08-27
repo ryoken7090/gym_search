@@ -11,7 +11,7 @@ class Facility < ApplicationRecord
   validates :name, uniqueness: true
   validates :name, length: { in: 1..30 }
   validates :tell, format: {with: /\A0\d{1,3}[-(]\d{1,4}[-)]\d{4}\z/}, allow_blank: true
-  validates :monthly_fee, format: {with: /\A\d{4,6}\z/}, allow_blank: true
+  validate :current_price
 
   def avg_score(category)
     unless self.reviews.average(category).blank?
@@ -132,5 +132,17 @@ class Facility < ApplicationRecord
     yes_open_all_time: 1,
     not_open_all_time: 2
   }
+
+  private
+
+  def current_price
+    if monthly_fee.present?
+      if monthly_fee < 1000
+        errors.add(:monthly_fee, "月会費は1000円以上で登録してください")
+      elsif monthly_fee > 100000
+        errors.add(:monthly_fee, "月会費の値が大きすぎます")
+      end
+    end
+  end
 
 end
