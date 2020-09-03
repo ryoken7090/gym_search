@@ -2,8 +2,12 @@
   <div class="p-3">
     <span class="h2 title"><%= @user.name %>さんのページ</span>
   </div>
-  <% unless @facilities.blank? %>
-  <h3 class="p-3">■投稿した設備情報</h3>
-  <%= render 'facilities/list' %>
+  <% unless @user.facilities.blank? %>
+    <h3 class="p-3">■投稿した設備情報</h3>
+    <%= render partial: "facilities/list", locals: { facilities: @user.facilities } %>
+  <% end %>
+  <% unless @user.favorite_facilities.blank? %>
+    <h3 class="p-3">■お気に入りした設備情報</h3>
+    <%= render partial: "facilities/list", locals: { facilities: @user.favorite_facilities } %>
   <% end %>
 </div>

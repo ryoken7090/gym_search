@@ -7,6 +7,9 @@ class Facility < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :equipments, dependent: :destroy
   accepts_nested_attributes_for :equipments
+  has_many :favorites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_users, through: :favorites, source: :user
 
   validates :name, uniqueness: true
   validates :name, length: { in: 1..30 }

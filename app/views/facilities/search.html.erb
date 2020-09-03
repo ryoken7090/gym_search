@@ -3,7 +3,7 @@
     <span class="h2 title">検索結果</span>
   </div>
   <% unless @facilities.blank? %>
-  <%= render 'list' %>
+    <%= render partial: "facilities/list", locals: { facilities: @facilities } %>
   <% else %>
   <div class="text-center">
     該当の施設は見つかりませんでした

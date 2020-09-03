@@ -11,7 +11,7 @@ class FacilitiesController < ApplicationController
 
   def search
     @q = Facility.search(search_params)
-    @facilities = @q.result(distinct: true)
+    @facilities = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def new
@@ -48,6 +48,9 @@ class FacilitiesController < ApplicationController
     @equipments = @facility.equipments
     @reviews = Review.where(facility_id: @facility.id)
     @review = @facility.reviews.build
+    if user_signed_in?
+      @favorite = current_user.favorites.find_by(facility_id: @facility.id)
+    end
   end
 
 

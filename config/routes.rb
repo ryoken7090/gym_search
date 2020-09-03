@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     end
     resources :reviews, only: [:create]
   end
+  resources :favorites, only: [:create, :destroy]
   root 'facilities#index'
 end
