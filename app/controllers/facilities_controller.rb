@@ -48,7 +48,9 @@ class FacilitiesController < ApplicationController
     @equipments = @facility.equipments
     @reviews = Review.where(facility_id: @facility.id)
     @review = @facility.reviews.build
-    @favorite = current_user.favorites.find_by(facility_id: @facility.id)
+    if user_signed_in?
+      @favorite = current_user.favorites.find_by(facility_id: @facility.id)
+    end
   end
 
 
