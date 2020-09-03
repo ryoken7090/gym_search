@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe Facility, type: :system do
   before do
-    @facility = create(:city, name: 'テスト区')
+    @city = create(:city, name: 'テスト区')
     create(:city, name: 'テスト市')
     @user = create(:user)
     login_as @user
@@ -83,6 +83,20 @@ RSpec.describe Facility, type: :system do
         expect(page).to have_content '駅からの距離： 徒歩10分'
         expect(page).to have_content '定休日： なし'
         expect(page).to have_content '営業時間： 24時間'
+      end
+    end
+  end
+  describe 'search function' do
+    context 'when 25 facilities register' do
+      it 'divide the search result into three' do
+        25.times {create(:facility, poster_id: @user.id)}
+        visit root_path
+        click_button 'この条件で一括検索'
+        expect(all('.card').size).to eq(10)
+        expect(page).to have_selector '.page-item', text: '3'
+        expect(page).not_to have_selector '.page-item', text: '4'
+        click_link '3'
+        expect(all('.card').size).to eq(5)
       end
     end
   end
