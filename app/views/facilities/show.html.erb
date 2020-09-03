@@ -6,7 +6,7 @@
     <div id="fav_button">
       <%= render partial: "favorites/favorite", locals: { favorite: @favorite, facility: @facility } %>
     </div>
-    <div id="total_ratings" class="p-3">
+    <div id="total_ratings" class="px-3">
       <%= render partial: 'reviews/total', locals: { reviews: @facility.reviews, facility: @facility } %>
     </div>
 
