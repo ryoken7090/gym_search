@@ -11,7 +11,7 @@ class FacilitiesController < ApplicationController
 
   def search
     @q = Facility.search(search_params)
-    @facilities = @q.result(distinct: true)
+    @facilities = @q.result(distinct: true).page(params[:page]).per(10)
   end
 
   def new

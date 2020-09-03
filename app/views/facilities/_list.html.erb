@@ -12,53 +12,53 @@
         </div>
         <div class="row">
           <div class="col-4 text-center p-2">
-            <div class="">
+            <div>
               フリーウェイト
             </div>
-            <div class="">
+            <div>
               <span class="fa fa-star result-star"></span>
               <span class="result-num"><%= facility.avg_score(:free_weight) %></span>
             </div>
           </div>
           <div class="col-4 text-center p-2">
-            <div class="">
+            <div>
               マシン
             </div>
-            <div class="">
+            <div>
               <span class="fa fa-star result-star"></span>
               <span class="result-num"><%= facility.avg_score(:machine) %></span>
             </div>
           </div>
           <div class="col-4 text-center p-2">
-            <div class="">
+            <div>
               有酸素
             </div>
-            <div class="">
+            <div>
               <span class="fa fa-star result-star"></span>
               <span class="result-num"><%= facility.avg_score(:caedio) %></span>
             </div>
           </div>
           <div class="col-4 text-center p-2">
-            <div class="">
+            <div>
               ビジター利用
             </div>
-            <div class="">
+            <div>
               <span class="result-symbol"><%= facility.visiter_symbol %></span>
             </div>
           </div>
           <div class="col-4 text-center p-2">
-            <div class="">
+            <div>
               駅チカ
             </div>
-            <div class="">
+            <div>
               <span class="result-symbol"><%= facility.accessible_ten_min_symbol %></span>
             </div>
           </div>
           <div class="col-4 text-center p-2">
-            <div class="">
+            <div>
               24H営業
             </div>
-            <div class="">
+            <div>
               <span class="result-symbol"><%= facility.open_all_time_symbol %></span>
             </div>
           </div>
@@ -67,3 +67,6 @@
     </div>
   <% end %>
 </div>
+<% if action_name == "search" %>
+  <%= paginate @facilities %>
+<% end %>
