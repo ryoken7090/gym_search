@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
     resources :reviews, only: [:create]
   end
+  post '/facilities/guest_sign_in', to: 'facilities#new_guest'
   resources :favorites, only: [:create, :destroy]
   root 'facilities#index'
 end
