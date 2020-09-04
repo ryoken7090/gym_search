@@ -10,4 +10,10 @@ FactoryBot.define do
     email {"test2@example.com"}
     password {"password"}
   end
+
+  factory :third_user, class: User do
+    name { "テストユーザー3"}
+    email {"test3@example.com"}
+    password {"password"}
+  end
 end
